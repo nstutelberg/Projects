@@ -3,10 +3,15 @@
 This project explores that determinants of the price of luxury sneakers. The sneaker resale market was valued at $2 billion in 2019 according to studies done by Statista and Cowen. The most popular sneakers to resell are Adidas and Nikes, with Jordans and Yeezys being some of the most popular sneaker models on the market.
 
 In my analysis, the statistical analysis methods I use are:
+
     Linear Regression
+    
     Multivariate Regression
+    
     AIC (Akaike information criterion)
+    
     Binary Regressors
+    
     Interaction effects
     
 ## Hypotheses
