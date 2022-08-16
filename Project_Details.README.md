@@ -1,15 +1,10 @@
  Projects
 
 hypotheses
-    #1) average disposable income per capita is positively related to the average selling price of yeezys. (TABLEAU MEAN OF SELL PRICE AND INCOME)
-    #2) solid color yeezys appreciate faster than multicolored yeezys or striped yeezys (TABLEAU GROUP COLORS AND TAKE AVERAGE OR PLOT TWO LINES IN R)
-    #3) higher shoe size correlates to higher resale price (REGRESSION IN R)
-    #4) later order date (more recent) correlates to higher resale price. (REGRESSION IN R)
+
 
 notes
-    #fix a day and find the day that has the greatest variation in the cross section, a day where you have the most models being sold
-    #looking for greatest degree of variation fixing the time period, CROSS SECTIONAL ANALYSIS. fix time period of sale
-    #an option would be to only include common sizes so you have more observations that are more consistent
+
 
 proposed plan
     #find greatest number of observations on a given day, fix time, find sale date that gives largest # of observations of each make
@@ -20,18 +15,31 @@ With plotting the regression lines, In order to see the relationship for each va
       variables won't have a meaningful regression line because they are discrete values rather than continuous. However, we can still see the difference in the mean
       of each category by using a plot
       
-      
-## Project title
-A little info about your project and/ or overview that explains **what** the project is about.
+## Project Introduction
 
-## Motivation
-A short description of the motivation behind the creation and maintenance of the project. This should explain **why** the project exists.
+This project explores that determinants of the price of luxury sneakers. The sneaker resale market was valued at $2 billion in 2019 according to studies done by Statista and Cowen. The most popular sneakers to resell are Adidas and Nikes, with Jordans and Yeezys being some of the most popular sneaker models on the market.
 
-## Build status
-Build status of continus integration i.e. travis, appveyor etc. Ex. - 
+In my analysis, the statistical analysis methods I use are:
+    Linear Regression
+    Multivariate Regression
+    AIC (Akaike information criterion)
+    Binary Regressors
+    Interaction effects
+    
+## Hypotheses
+    1) Average disposable income per capita is positively related to the average selling price of yeezys. (TABLEAU MEAN OF SELL PRICE AND INCOME)
+    2) Solid color yeezys appreciate faster than multicolored yeezys or striped yeezys (TABLEAU GROUP COLORS AND TAKE AVERAGE OR PLOT TWO LINES IN R)
+    3) Higher shoe size correlates to higher resale price (REGRESSION IN R)
+    4) Later order date (more recent) correlates to higher resale price. (REGRESSION IN R)
 
-[![Build Status](https://travis-ci.org/akashnimare/foco.svg?branch=master)](https://travis-ci.org/akashnimare/foco)
-[![Windows Build Status](https://ci.appveyor.com/api/projects/status/github/akashnimare/foco?branch=master&svg=true)](https://ci.appveyor.com/project/akashnimare/foco/branch/master)
+## Notes 
+    Fix a day and find the day that has the greatest variation in the cross section, a day where you have the most models being sold
+    Looking for greatest degree of variation fixing the time period, CROSS SECTIONAL ANALYSIS. fix time period of sale
+    An option would be to only include common sizes so you have more observations that are more consistent
+
+## Proposed Plan
+    Find greatest number of observations on a given day, fix time, find sale date that gives largest # of observations of each make
+    Find a day with greatest number of observations for each specific shoe, regress price on shoe size and quantity of shoes that was released (probably not available)
 
 ## Code style
 If you're using any code style like xo, standard etc. That will help others while contributing to your project. Ex. -
@@ -75,7 +83,8 @@ Give proper credits. This could be a link to any repo which inspired you to buil
 
 #### Anything else that seems useful
 
-## License
-A short snippet describing the license (MIT, Apache etc)
+## Links
+Statista study: https://www.statista.com/statistics/1202148/sneaker-resale-market-value-us-and-global/
+Cowen Research Equity study: https://www.cowen.com/insights/sneakers-as-an-alternative-asset-class-part-ii/
 
 MIT © [Yourname]()
