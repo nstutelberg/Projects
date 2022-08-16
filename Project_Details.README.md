@@ -32,7 +32,7 @@ In my analysis, the statistical analysis methods I use are:
     Find greatest number of observations on a given day, fix time, find sale date that gives largest # of observations of each make
     Find a day with greatest number of observations for each specific shoe, regress price on shoe size and quantity of shoes that was released (probably not available)
 
-## Code style
+## Findings
 If you're using any code style like xo, standard etc. That will help others while contributing to your project. Ex. -
 
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
