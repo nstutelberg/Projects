@@ -21,61 +21,112 @@ With plotting the regression lines, In order to see the relationship for each va
       of each category by using a plot
       
       
-## Project title
-A little info about your project and/ or overview that explains **what** the project is about.
-
-## Motivation
-A short description of the motivation behind the creation and maintenance of the project. This should explain **why** the project exists.
-
-## Build status
-Build status of continus integration i.e. travis, appveyor etc. Ex. - 
-
+# Foco
 [![Build Status](https://travis-ci.org/akashnimare/foco.svg?branch=master)](https://travis-ci.org/akashnimare/foco)
 [![Windows Build Status](https://ci.appveyor.com/api/projects/status/github/akashnimare/foco?branch=master&svg=true)](https://ci.appveyor.com/project/akashnimare/foco/branch/master)
-
-## Code style
-If you're using any code style like xo, standard etc. That will help others while contributing to your project. Ex. -
-
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
- 
-## Screenshots
-Include logo/demo screenshot etc.
 
-## Tech/framework used
-Ex. -
+<h1 align="center">
+  <br>
+  <img src="https://github.com/akashnimare/foco/blob/master/app/img/foco.png" alt="Foco" width="160">
+</h1>
 
-<b>Built with</b>
-- [Electron](https://electron.atom.io)
+<h4 align="center">A desktop menubar app based on <a href="http://electron.atom.io" target="_blank">Electron</a>.</h4>
 
-## Features
-What makes your project stand out?
+Foco is a cross-platform desktop app :computer: which runs in menubar.
+Foco boosts your productivity :rocket: by creating perfect productive environment.
+It has the best sounds for getting work done :raised_hands:.
 
-## Code Example
-Show what the library does as concisely as possible, developers should be able to figure out **how** your project solves their problem by looking at the code example. Make sure the API you are showing off is obvious, and that your code is short and concise.
+# Demo
+👉 Watch it <a href="https://www.youtube.com/watch?v=6SG2Mjpv8YE">here</a>.
+<br>
+
+[![Watch demo](https://cloud.githubusercontent.com/assets/2263909/18597112/0622a3b0-7c6a-11e6-897d-13f0aa36b6e4.png)](https://www.youtube.com/watch?v=6SG2Mjpv8YE)
+
+<img src="https://j.gifs.com/BBqE8Y.gif">
 
 ## Installation
-Provide step by step series of examples and explanations about how to get a development env running.
+[FR]: https://github.com/akashnimare/foco/releases
 
-## API Reference
+### OS X
 
-Depending on the size of the project, if it is small and simple enough the reference docs can be added to the README. For medium size to larger projects it is important to at least provide a link to where the API reference docs live.
+1. Download [Foco-osx.x.x.x.dmg][FR] or [Foco-osx.x.x.x.zip][FR]
+2. Open or unzip the file and drag the app into the `Applications` folder
+3. Done!
 
-## Tests
-Describe and show how to run the tests with code examples.
+### Windows
+coming soon :stuck_out_tongue_closed_eyes:
 
-## How to use?
-If people like your project they’ll want to learn how they can use it. To do so include step by step guide to use your project.
+### Linux
 
-## Contribute
+*Ubuntu, Debian 8+ (deb package):*
 
-Let people know how they can contribute into your project. A [contributing guideline](https://github.com/zulip/zulip-electron/blob/master/CONTRIBUTING.md) will be a big plus.
+1. Download [Foco-linux.x.x.x.deb][FR]
+2. Double click and install, or run `dpkg -i Foco-linux.x.x.x.deb` in the terminal
+3. Start the app with your app launcher or by running `foco` in a terminal
 
-## Credits
-Give proper credits. This could be a link to any repo which inspired you to build this project, any blogposts or links to people who contrbuted in this project. 
 
-#### Anything else that seems useful
+### For developers
+Clone the source locally:
+
+```sh
+$ git clone https://github.com/akashnimare/foco/
+$ cd foco
+```
+If you're on Debian or Ubuntu, you'll also need to install
+`nodejs-legacy`:
+
+Use your package manager to install `npm`.
+
+```sh
+$ sudo apt-get install npm nodejs-legacy
+```
+
+Install project dependencies:
+
+```sh
+$ npm install
+```
+Start the app:
+
+```sh
+$ npm start
+```
+
+### Build installers
+
+Build app for OSX
+```sh
+$ npm run build:osx
+```
+Build app for Linux
+```sh
+$ npm run build:linux
+```
+
+## Features
+
+- [x] Offline support
+- [x] Cross-platform
+- [x] Awesome sounds
+- [x] No singup/login required
+- [ ] Auto launch
+- [ ] Auto updates
+
+
+## Usage
+
+<kbd>Command/ctrl + R</kbd> - Reload
+
+<kbd>command + q</kbd> - Quit App (while window is open).
+
+## Built with
+- [Electron](https://electron.atom.io)
+- [Menubar](https://github.com/maxogden/menubar)
+
+## Related
+- [zulip-electron](https://github.com/zulip/zulip-electron)
 
 ## License
-A short snippet describing the license (MIT, Apache etc)
 
-MIT © [Yourname]()
+MIT  © [Akash Nimare](http://akashnimare.in)
