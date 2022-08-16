@@ -1,20 +1,3 @@
- Projects
-
-hypotheses
-
-
-notes
-
-
-proposed plan
-    #find greatest number of observations on a given day, fix time, find sale date that gives largest # of observations of each make
-    #find a day with greatest number of observations for each specific shoe, regress price on shoe size and quantity of shoes that was released (probably not available)
-
-
-With plotting the regression lines, In order to see the relationship for each variable, there is a separate ggplot graph for each variable. Note that the binary dependent 
-      variables won't have a meaningful regression line because they are discrete values rather than continuous. However, we can still see the difference in the mean
-      of each category by using a plot
-      
 ## Project Introduction
 
 This project explores that determinants of the price of luxury sneakers. The sneaker resale market was valued at $2 billion in 2019 according to studies done by Statista and Cowen. The most popular sneakers to resell are Adidas and Nikes, with Jordans and Yeezys being some of the most popular sneaker models on the market.
@@ -36,6 +19,9 @@ In my analysis, the statistical analysis methods I use are:
     Fix a day and find the day that has the greatest variation in the cross section, a day where you have the most models being sold
     Looking for greatest degree of variation fixing the time period, CROSS SECTIONAL ANALYSIS. fix time period of sale
     An option would be to only include common sizes so you have more observations that are more consistent
+    With plotting the regression lines, In order to see the relationship for each variable, there is a separate ggplot graph for each variable. Note that the binary             dependent 
+    Variables won't have a meaningful regression line because they are discrete values rather than continuous. However, we can still see the difference in the mean
+          of each category by using a plot
 
 ## Proposed Plan
     Find greatest number of observations on a given day, fix time, find sale date that gives largest # of observations of each make
