@@ -1,12 +1,14 @@
 ## Project Introduction
 
-This project explores that determinants of the price of luxury sneakers. The sneaker resale market was valued at $2 billion in 2019 according to studies done by Statista and Cowen. The most popular sneakers to resell are Adidas and Nikes, with Jordans and Yeezys being some of the most popular sneaker models on the market.
+This project explores that determinants of the price of luxury sneakers. The sneaker resale market was valued at $2 billion in 2019 according to studies done by Statista and Cowen. The most popular sneakers to resell are Adidas and Nikes, with Jordans and Yeezys being some of the most popular sneaker models on the market. My analysis only focuses on Yeezy 350 v2's so I can control for differences in the sneakers and focus on my chosen independent variables.
 
 In my analysis, the statistical analysis methods I use are:
 
     Linear Regression
     
     Multivariate Regression
+    
+    Cross-Sectional Analysis
     
     AIC (Akaike information criterion)
     
@@ -36,7 +38,9 @@ In my analysis, the statistical analysis methods I use are:
 If you're using any code style like xo, standard etc. That will help others while contributing to your project. Ex. -
 
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
- 
+
+## Interpretation
+     Residuals - Possible that since the median is deeply negative that the data is skewed left,
 ## Screenshots
 Include logo/demo screenshot etc.
 
