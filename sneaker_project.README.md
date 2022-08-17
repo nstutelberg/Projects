@@ -1,29 +1,32 @@
 # Project Introduction
 
-This project explores the determinants of the price of luxury sneakers. The sneaker resale market was valued at $2 billion in 2019 according to studies done by Statista and Cowen [(Link)](#Links). The most popular sneakers to resell are Adidas and Nikes, with Jordans and Yeezys being some of the most popular sneaker models on the market. My analysis only focuses on Yeezy 350 v2's so I can control for differences in the sneakers and focus on my chosen independent variables. This project is a cross-sectional analysis of 9 different models of Yeezys, and I sought out the most influential factors behind an increase or decrease in the price of a sneaker in the after-market.
+This project explores the determinants of the price of luxury sneakers. The sneaker resale market was valued at $2 billion in 2019 according to studies done by Statista and Cowen [(Link)](#Links). The most popular sneakers to resell are Adidas and Nikes, with Jordans and Yeezys being some of the most popular sneaker models on the market. 
 
-In my cross-sectional analysis, the statistical analysis methods I use are:
+With me being involved in the sneaker reselling market, I wanted to determine what the key factors were for whether a shoe would appreciate or depreciate over time.
+My analysis only focuses on Yeezy 350 v2's so I can control for brand preference and personal taste when it came to a sneakers silhouette. This project is a cross-sectional analysis of 9 different models of Yeezys, and I sought out the most influential factors behind an increase or decrease in the price of a sneaker in the after-market.
+
+**In my cross-sectional analysis, the statistical analysis methods I used were:**
   
   -Linear Regression
     
   -Multivariate Regression
     
-  -AIC (Akaike information criterion)
+  -AIC (Akaike Information Criterion)
     
   -Binary Regressors
     
-  -Interaction effects
+  -Interaction Effects
     
   -Wald Test
     
 # Hypotheses
-   1) Average disposable income per capita is positively related to the average selling price of yeezys. (TABLEAU MEAN OF SELL PRICE AND INCOME)
-   
-   2) Solid color yeezys appreciate faster than multicolored yeezys or striped yeezys (TABLEAU GROUP COLORS AND TAKE AVERAGE OR PLOT TWO LINES IN R)
+   1) Solid color yeezys appreciate faster than striped yeezys
+      H<0>:
+      H<1>:
     
-   3) Higher shoe size correlates to higher resale price (REGRESSION IN R)
+   2) Dark color yeezys appreciate faster than light color yeezys
     
-   4) Later order date (more recent) correlates to higher resale price. (REGRESSION IN R)
+   4) Larger shoe size correlates to higher resale price
 
 # Notes 
    Fix a day and find the day that has the greatest variation in the cross section, a day where you have the most models being sold
