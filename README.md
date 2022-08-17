@@ -91,6 +91,8 @@ My analysis only focuses on Yeezy 350 v2's so I can control for brand preference
    
     summary(lm(`Sale Price` ~ Blue_Tint + Butter + Cream_White + Frozen_Yellow + Sesame + Static + Static_Reflective+ Zebra, data = shoestotal))
     summary(lm(`Sale Price` ~ Static_Reflective, data = shoestotal))
+    
+    summary(lm(`Sale Price` ~ `Shoe Size` + `Days_Since_IPO` + `Solid_Stripe` + `Light_Dark`, data = shoestotal))
   
         
 # Future Analysis
@@ -118,7 +120,37 @@ My analysis only focuses on Yeezy 350 v2's so I can control for brand preference
 # Interpretation
      Residuals - Possible that since the median is deeply negative that the data is skewed left,
 # Screenshots
-Include logo/demo screenshot etc.
+
+    ButterPlot <- ggplot(Butter, aes(x = `Order Date`, y = `Sale Price`, color = `Shoe Size`)) +
+        geom_point() + geom_smooth(method = "lm") +
+        ggtitle("Sale Prices for Yeezy 350 v2 Butter") +
+        labs(x = "Date", y = "Sale Price") +
+        theme_economist_white()
+
+    FrozenPlot <- ggplot(Frozen, aes(x = `Order Date`, y = `Sale Price`, color = `Shoe Size`)) +
+        geom_point() + geom_smooth(method = lm) +
+        ggtitle("Sale Prices for Yeezy 350 v2 Frozen") +
+        labs(x = "Date", y = "Sale Price") +
+        theme_economist_white()
+      
+      
+    ButterPlotLog <- ggplot(Butter, aes(x = `Order Date`, y = `Sale Price`, color = `Shoe Size`)) +
+        geom_point() + geom_smooth(method = lm) +
+        ggtitle("Sale Prices for Yeezy 350 v2 Butter") +
+        labs(x = "Date", y = "Sale Price") +
+        scale_y_log10() +
+        scale_x_date(date_breaks = "2 months", date_labels = "%b-%y") +
+        theme_economist_white()
+
+    FrozenPlotLog <- ggplot(Frozen, aes(x = `Order Date`, y = `Sale Price`, color = `Shoe Size`)) +
+         geom_point() + geom_smooth(method = lm) +
+         ggtitle("Sale Prices for Yeezy 350 v2 Frozen") +
+         labs(x = "Date", y = "Sale Price") +
+         scale_y_log10() +
+         scale_x_date(date_breaks = "2 months", date_labels = "%b-%y") +
+         theme_economist_white()
+
+      ggarrange(ButterPlot, ButterPlotLog, FrozenPlot, FrozenPlotLog)
 
    For the ggplots for the binary regressors, the regression line will not be meaningful because these variables contain discrete values rather than continuous. However, the graphs are still beneficial in order to see the difference in the mean price of the two cases (1vs0).
    
