@@ -58,7 +58,18 @@ My analysis only focuses on Yeezy 350 v2's so I can control for brand preference
    
    
 # Findings
-   Analysis resulted in the linear regression model found below. I limited the independent variables used in the final model to 3. With more variables, the less impact each independent variable has, and the more likely it is that I would run into a multicollinearity problem, with two independent variables being highly correlated to each other
+   Analysis resulted in the linear regression model found below. I limited the independent variables used in the final model to 3. With more variables, the less impact each independent variable has, and the more likely it is that I would run into a multicollinearity problem. 
+  
+  **Variable definitions:**
+  
+  Sale Price - Price that a sneaker sold for on StockX (after-market resell website).
+  
+  Days Since IPO - Amount of days that have passed since the initial release of the sneaker.
+  
+  Solid Stripe - Binary regressor with 0 being a solid colored Yeezy (no stripes / one solid color) and 1 being a striped Yeezy (stripes wrapping around entire sneaker).
+  
+  Light Dark - Binary regressor with 0 being a light colored Yeezy (white, yellow, light blue) and 1 being a dark colored yeezy (gray, black, dark brown).
+  
    
      summary(lm(`Log_Sale_Price` ~ `Log_Days_Since_IPO` + `Solid_Stripe` + `Light_Dark`, data = shoestotal))
      
@@ -110,8 +121,12 @@ My analysis only focuses on Yeezy 350 v2's so I can control for brand preference
             
   -P value of <2e-16 is the probability of observing a value larger than t (25.28).This value is small enough where the relationship between price and shoe size is unlikely due to chance. 
    
-  -Shoe Size coefficient of 9.17 shows inverse relationship between price and shoe size. (99% confidence level).
-       For every 1 unit increase in shoe size -> 9.17 unit increase in price
+  -Log_Days_Since_IPO coefficient of -0.06 shows inverse relationship between price and the amount of days since the IPO of the sneaker.
+       For every 1% increase in days since IPO -> 6% unit increase in price
+       
+  -Solid_Stripe coefficient of 0.24 is the ratio of the geometric mean for the solid group to the geometric mean for the stripe group
+  
+  -Light_Dark coefficient of 0.31 is the ratio of the geometric mean for the light group to the geometric mean for the stripe group
 
   -Residual standard error of 254.5 is measuring the quality of the regression fit. It's the avg amount that the price will deviate from regression line (97,866 df)
        Given the mean price is $361.21 and the residual standard error is 254.5, the percentage error (the % any prediction would still be off by) is 70.46%
