@@ -51,44 +51,17 @@ My analysis only focuses on Yeezy 350 v2's so I can control for brand preference
         H₁: There is a positive relationship between the order date of a Yeezy and its sale price
         
 
-# Notes 
-   To prepare the data, I fixed a day and found the day that has the greatest variation in the cross section. This would be a day where there is the most models being sold. 
-   
-# Dummy Variable Notes  
-   In the R code, I ran a few analyses using dummy variables in order to see which models appreciated faster than others. These analyses are not tied to the final product, but the method is there if I wanted to compare sneaker models. To set up the dummy variables, I made a column for each sneaker model, and filled the columns with alternating 1s and 0s so I can toggle on and off certain models for a regression analysis. 
-   
-   For this method, I treated the Beluga-2pt0 as the base case model, and compared all other sneaker models to the Beluga. This analysis was mostly exploratory, but I found that the only sneaker that had a positive coefficient was the Yeezy 350 v2 Static Reflective. It is the only sneaker to appreciate in value over time, and this is further shown through a bivariate regression with sale price. Results shown below
-   
-    summary(lm(`Sale Price` ~ Blue_Tint + Butter + Cream_White + Frozen_Yellow + Sesame + Static + Static_Reflective+ Zebra, data = shoestotal))
-    summary(lm(`Sale Price` ~ Static_Reflective, data = shoestotal))
-   
-
-
 # Proposed Plan
-   Find greatest number of observations on a given day, fix time, find sale date that gives largest # of observations of each make
-    Find a day with greatest number of observations for each specific shoe, regress price on shoe size and quantity of shoes that was released (probably not available)
-
+   To prepare the data, fix the day and get the day that has the greatest variation in the cross section. This would be a day where there is the most models being sold. Add a column for each sneaker to act as a dummy variable. Run both univariate and multivariate regressions and perform tests on the model fit. Plot results to vizualise the regression line and look for heteroscedasticity and the amount of variance in the prices over time. This influences whether log transformations are needed to normalize the data. 
+   
+   
 # Findings
    Analysis resulted in the linear regression model found below. I limited the independent variables used in the final model to 3, since with more variables, the less impact each independent variable has, and the more likely it is that I would run into a multicollinearity problem, with two independent variables being highly correlated to each other
    
     summary(lm(`Log_Sale_Price` ~ `Log_Days_Since_IPO` + `Solid_Stripe` + `Light_Dark`, data = shoestotal))
-    
-# Future Analysis
-   Due to the model Rsquared being ~ 0.30 depending on if we use log transformation or not, there is still a significant amount of variation in the dependent variable that is not accounted for. 
-   
-   In future research, these are a few ideas I would pursue:
-   
-   -Through my experience in the market, I would argue that the number of similar Yeezys compared to the initial model would have an inverse relationship with price. The more similar colorways are released, the less demand there is for the original since some customers see the new model as being comparable to the original and buy the new model instead. This would act as an increase in supply, lowering the price of the original. I w
-          -To get this data, I would take a few Yeezy models and create a dummy variable for either 'Similar' or 'Dissimilar'. There would be some subjective calls on whether a new model is similar to the orginal, but I would mostly use characteristics such as color and pattern as I did in my first analysis.
-          
-   -I would also try to quantify the "hype" around the brand, since the sneaker reselling community often takes heightened interest in certain models for a time, and moves on when the model is either overdone or a new model comes in that attracts the attention of the community. I could use Google Trends as a proxy for interest in the brand, and I would search for the terms "Yeezy" and "Adidas" to see if there is an upward or downward trend in the number of searches related to these keywords. I could use the Google Trends data and tie it in with the shoe price to see if the more these words are searched, the more the sale price on a after-market site increases. 
-          -I could also look at the r/Sneakers subreddit where there are 3.1M followers, and record the amount of posts related to Yeezys show up in the feed and the number of upvotes for each post. The subreddit is a place for enthusiasts to show off their sneakers, and sneakers with the most "hype" and excitement around them garner more upvotes. Granted this is a subset of the sneaker community where the opinions may not represent the entire community, so the results would have to be taken with a grain of salt. 
-   
-      summary(lm(`Log_Sale_Price` ~ `Log_Days_Since_IPO` + `Solid_Stripe` + `Light_Dark` + `Hype_Level` + `Post_Engagement`, data = shoestotal))
-   
-   
-
-# Regression Model Analysis
+ 
+ 
+# Regression Model
   -Residuals are the differences between observed response values (price) and the response values that the model predicted (shoe size)
        Looking for symmetrical distribution, and since our data is not symmetrical, the model is predicting points that land far away from the actual observed points.
        Can see in the large disparity between the quartile ranges and the min/max that the datset is not very symmetric.
@@ -109,7 +82,29 @@ My analysis only focuses on Yeezy 350 v2's so I can control for brand preference
   -R Squared of 0.0065 shows that our predictor variable (shoe size) isn't accounting for much of the total variance (Only .65%)
 
   -F statistic of 638.9 is indicating whether there is a relationship between price and shoe size. F statistic is significantly larger than 1 so we can infer a relationship
+ 
+ 
+# Dummy Variable Notes  
+   In the R code, I ran a few analyses using dummy variables in order to see which models appreciated faster than others. These analyses are not tied to the final product, but the method is there if I wanted to compare sneaker models. To set up the dummy variables, I made a column for each sneaker model, and filled the columns with alternating 1s and 0s so I can toggle on and off certain models for a regression analysis. 
+   
+   For this method, I treated the Beluga-2pt0 as the base case model, and compared all other sneaker models to the Beluga. This analysis was mostly exploratory, but I found that the only sneaker that had a positive coefficient was the Yeezy 350 v2 Static Reflective. It is the only sneaker to appreciate in value over time, and this is further shown through a bivariate regression with sale price. Results shown below
+   
+    summary(lm(`Sale Price` ~ Blue_Tint + Butter + Cream_White + Frozen_Yellow + Sesame + Static + Static_Reflective+ Zebra, data = shoestotal))
+    summary(lm(`Sale Price` ~ Static_Reflective, data = shoestotal))
+  
         
+# Future Analysis
+   Due to the model Rsquared being ~ 0.30 depending on if we use log transformation or not, there is still a significant amount of variation in the dependent variable that is not accounted for. 
+   
+   In future research, these are a few ideas I would pursue:
+   
+   -Through my experience in the market, I would argue that the number of similar Yeezys compared to the initial model would have an inverse relationship with price. The more similar colorways are released, the less demand there is for the original since some customers see the new model as being comparable to the original and buy the new model instead. This would act as an increase in supply, lowering the price of the original. I w
+          -To get this data, I would take a few Yeezy models and create a dummy variable for either 'Similar' or 'Dissimilar'. There would be some subjective calls on whether a new model is similar to the orginal, but I would mostly use characteristics such as color and pattern as I did in my first analysis.
+          
+   -I would also try to quantify the "hype" around the brand, since the sneaker reselling community often takes heightened interest in certain models for a time, and moves on when the model is either overdone or a new model comes in that attracts the attention of the community. I could use Google Trends as a proxy for interest in the brand, and I would search for the terms "Yeezy" and "Adidas" to see if there is an upward or downward trend in the number of searches related to these keywords. I could use the Google Trends data and tie it in with the shoe price to see if the more these words are searched, the more the sale price on a after-market site increases. 
+          -I could also look at the r/Sneakers subreddit where there are 3.1M followers, and record the amount of posts related to Yeezys show up in the feed and the number of upvotes for each post. The subreddit is a place for enthusiasts to show off their sneakers, and sneakers with the most "hype" and excitement around them garner more upvotes. Granted this is a subset of the sneaker community where the opinions may not represent the entire community, so the results would have to be taken with a grain of salt. 
+   
+      summary(lm(`Log_Sale_Price` ~ `Log_Days_Since_IPO` + `Solid_Stripe` + `Light_Dark` + `Hype_Level` + `Post_Engagement`, data = shoestotal))
 
    **Interaction of Variables**
     Interaction did not work well in the model. I wanted to test whether the relationship between price and days since the sneaker IPO'd was different depending on the color of the sneaker or the pattern of the sneaker. The hypothesis was that the color/pattern would either lead to less price depreciation over time or cause the price to fall faster. 
