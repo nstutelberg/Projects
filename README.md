@@ -18,6 +18,8 @@ My analysis only focuses on Yeezy 350 v2's so I can control for brand preference
   -Interaction Effects
     
   -Wald Test
+  
+  -Log Transformation
     
 # Hypotheses
    1) Solid color Yeezys appreciate faster than striped Yeezys
@@ -52,11 +54,11 @@ My analysis only focuses on Yeezy 350 v2's so I can control for brand preference
         
 
 # Proposed Plan
-   To prepare the data, fix the day and get the day that has the greatest variation in the cross section. This would be a day where there is the most models being sold. Add a column for each sneaker to act as a dummy variable. Run both univariate and multivariate regressions and perform tests on the model fit. Plot results to vizualise the regression line and look for heteroscedasticity and the amount of variance in the prices over time. This influences whether log transformations are needed to normalize the data. 
+   To prepare the data, fix the day and get the day that has the greatest variation in the cross section. This would be a day where there is the most models being sold. Add a column for each sneaker to act as a dummy variable. Run both bivariate and multivariate regressions and perform tests on the model fit. Plot results to vizualise the regression line and look for heteroscedasticity and the amount of variance in the prices over time. This influences whether log transformations are needed to normalize the data. 
    
    
 # Findings
-   Analysis resulted in the linear regression model found below. I limited the independent variables used in the final model to 3, since with more variables, the less impact each independent variable has, and the more likely it is that I would run into a multicollinearity problem, with two independent variables being highly correlated to each other
+   Analysis resulted in the linear regression model found below. I limited the independent variables used in the final model to 3. With more variables, the less impact each independent variable has, and the more likely it is that I would run into a multicollinearity problem, with two independent variables being highly correlated to each other
    
      summary(lm(`Log_Sale_Price` ~ `Log_Days_Since_IPO` + `Solid_Stripe` + `Light_Dark`, data = shoestotal))
      
@@ -66,8 +68,13 @@ My analysis only focuses on Yeezy 350 v2's so I can control for brand preference
    **Wald test**  -
    Wald test revealed that the variables chosen for the final regression model are good fits for the model, and confirmed that Shoe Size is a poor predictor of the price of the sneaker. Through running the wald test for each of the variables in the final regression, I found that the p-value was less than 0.05 in all cases excluding the Shoe Size test case. Including statistically significant predictors should lead to better prediction and better model fit, so this test led me to believe that the variables in my model are the best considering the data.
    
-
- 
+   **AIC** -
+   Looking into the AIC confirmed that the variables 
+   
+   **Log Transformation** -
+   Took the natural log of both Sale Price and Days Since IPO. For Sale Price, there are sneakers that resold for $1,000+ before their mass release, and then went down to $250 months later, so the log is used here to more easily view the distribution when there is this much variability in the price. Took the natural log of Days Since IPO since the difference in the first 10-20 days since IPO are significant for the change in price, but once the days are in the hundreds, each additional day is less impactful. Use log to capture this assumption on diminishing returns.
+   
+   
  
 # Regression Model
   -Residuals are the differences between observed response values (price) and the response values that the model predicted (shoe size)
@@ -91,18 +98,20 @@ My analysis only focuses on Yeezy 350 v2's so I can control for brand preference
 
   -F statistic of 638.9 is indicating whether there is a relationship between price and shoe size. F statistic is significantly larger than 1 so we can infer a relationship
  
- 
-# Dummy Variable Notes  
-   In the R code, I ran a few analyses using dummy variables in order to see which models appreciated faster than others. These analyses are not tied to the final product, but the method is there if I wanted to compare sneaker models. To set up the dummy variables, I made a column for each sneaker model, and filled the columns with alternating 1s and 0s so I can toggle on and off certain models for a regression analysis. 
-   
-   For this method, I treated the Beluga-2pt0 as the base case model, and compared all other sneaker models to the Beluga. This analysis was mostly exploratory, but I found that the only sneaker that had a positive coefficient was the Yeezy 350 v2 Static Reflective. It is the only sneaker to appreciate in value over time, and this is further shown through a bivariate regression with sale price. Results shown below
-   
-    summary(lm(`Sale Price` ~ Blue_Tint + Butter + Cream_White + Frozen_Yellow + Sesame + Static + Static_Reflective+ Zebra, data = shoestotal))
-    summary(lm(`Sale Price` ~ Static_Reflective, data = shoestotal))
-    
-    summary(lm(`Sale Price` ~ `Shoe Size` + `Days_Since_IPO` + `Solid_Stripe` + `Light_Dark`, data = shoestotal))
+# Summary
+  The model used includes only statistically significant independent variables, with p-values for the binary regressors easily meeting a 99% confidence level, and Days Since IPO meeting a 95% confidence level. 
   
-        
+  
+  There is a positive relationship between Solid_Stripe and Sale Price, meaning that solid color Yeezys are garnering higher resale prices than striped Yeezys. Reject Null in favor of Alternative for Hypothesis #1.
+  
+  There is a positive relationship between Light_Dark and Sale Price, meaing that dark color Yeezys are garnering higher resale prices than light colored Yeezys.
+  
+  There is a negative relationship between Days Since IPO and Sale Price, meaning over time, as the shoe moves away from it's IPO date, the resell price of the sneaker in the after-market decreases. Fail to reject Null for Hypothesis #4. 
+  
+  
+
+
+
 # Future Analysis
    Due to the model Rsquared being ~ 0.30 depending on if we use log transformation or not, there is still a significant amount of variation in the dependent variable that is not accounted for. 
    
@@ -116,11 +125,19 @@ My analysis only focuses on Yeezy 350 v2's so I can control for brand preference
    
       summary(lm(`Log_Sale_Price` ~ `Log_Days_Since_IPO` + `Solid_Stripe` + `Light_Dark` + `Hype_Level` + `Post_Engagement`, data = shoestotal))
 
-    
-[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
 
-# Interpretation
-     Residuals - Possible that since the median is deeply negative that the data is skewed left,
+
+# Dummy Variable Notes  
+   In the R code, I ran a few analyses using dummy variables in order to see which models appreciated faster than others. These analyses are not tied to the final product, but the method is there if I wanted to compare sneaker models. To set up the dummy variables, I made a column for each sneaker model, and filled the columns with alternating 1s and 0s so I can toggle on and off certain models for a regression analysis. 
+   
+   For this method, I treated the Beluga-2pt0 as the base case model, and compared all other sneaker models to the Beluga. This analysis was mostly exploratory, but I found that the only sneaker that had a positive coefficient was the Yeezy 350 v2 Static Reflective. It is the only sneaker to appreciate in value over time, and this is further shown through a bivariate regression with sale price. Results shown below
+   
+    summary(lm(`Sale Price` ~ Blue_Tint + Butter + Cream_White + Frozen_Yellow + Sesame + Static + Static_Reflective+ Zebra, data = shoestotal))
+    summary(lm(`Sale Price` ~ Static_Reflective, data = shoestotal))
+    
+    summary(lm(`Sale Price` ~ `Shoe Size` + `Days_Since_IPO` + `Solid_Stripe` + `Light_Dark`, data = shoestotal))
+  
+     
 # Screenshots
 
     ButterPlot <- ggplot(Butter, aes(x = `Order Date`, y = `Sale Price`, color = `Shoe Size`)) +
