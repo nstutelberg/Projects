@@ -44,6 +44,15 @@ If you're using any code style like xo, standard etc. That will help others whil
 ## Screenshots
 Include logo/demo screenshot etc.
 
+## Continued Analysis
+    # Benefits and drawbacks of log transformations
+        As shown in this plot below
+        
+        
+        
+        
+        
+        
 ## Tech/framework used
 Ex. -
 
