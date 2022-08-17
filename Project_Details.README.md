@@ -16,13 +16,13 @@ In my analysis, the statistical analysis methods I use are:
     
     Interaction effects
     
-## Hypotheses
+# Hypotheses
     1) Average disposable income per capita is positively related to the average selling price of yeezys. (TABLEAU MEAN OF SELL PRICE AND INCOME)
     2) Solid color yeezys appreciate faster than multicolored yeezys or striped yeezys (TABLEAU GROUP COLORS AND TAKE AVERAGE OR PLOT TWO LINES IN R)
     3) Higher shoe size correlates to higher resale price (REGRESSION IN R)
     4) Later order date (more recent) correlates to higher resale price. (REGRESSION IN R)
 
-## Notes 
+# Notes 
     Fix a day and find the day that has the greatest variation in the cross section, a day where you have the most models being sold
     Looking for greatest degree of variation fixing the time period, CROSS SECTIONAL ANALYSIS. fix time period of sale
     An option would be to only include common sizes so you have more observations that are more consistent
@@ -30,22 +30,22 @@ In my analysis, the statistical analysis methods I use are:
     Variables won't have a meaningful regression line because they are discrete values rather than continuous. However, we can still see the difference in the mean
           of each category by using a plot
 
-## Proposed Plan
+# Proposed Plan
     Find greatest number of observations on a given day, fix time, find sale date that gives largest # of observations of each make
     Find a day with greatest number of observations for each specific shoe, regress price on shoe size and quantity of shoes that was released (probably not available)
 
-## Findings
+# Findings
 If you're using any code style like xo, standard etc. That will help others while contributing to your project. Ex. -
 
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
 
-## Interpretation
+# Interpretation
      Residuals - Possible that since the median is deeply negative that the data is skewed left,
-## Screenshots
+# Screenshots
 Include logo/demo screenshot etc.
 
-## Continued Analysis
-    # Benefits and drawbacks of log transformations
+# Continued Analysis
+    ## Benefits and drawbacks of log transformations
         As shown in this plot below
         
         
