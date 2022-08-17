@@ -1,4 +1,4 @@
-## Project Introduction
+### Project Introduction
 
 This project explores that determinants of the price of luxury sneakers. The sneaker resale market was valued at $2 billion in 2019 according to studies done by Statista and Cowen. The most popular sneakers to resell are Adidas and Nikes, with Jordans and Yeezys being some of the most popular sneaker models on the market. My analysis only focuses on Yeezy 350 v2's so I can control for differences in the sneakers and focus on my chosen independent variables.
 
