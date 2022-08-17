@@ -21,7 +21,7 @@ My analysis only focuses on Yeezy 350 v2's so I can control for brand preference
     
 # Hypotheses
    1) Solid color yeezys appreciate faster than striped yeezys
-      H<0>:
+      H</0>:
       H<1>:
     
    2) Dark color yeezys appreciate faster than light color yeezys
