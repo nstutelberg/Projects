@@ -13,7 +13,7 @@ My analysis only focuses on Yeezy 350 v2's so I can control for brand preference
     
   -AIC (Akaike Information Criterion)
     
-  -Binary Regressors
+  -Binary Regressors / Dummy Variables
     
   -Interaction Effects
     
@@ -45,12 +45,17 @@ My analysis only focuses on Yeezy 350 v2's so I can control for brand preference
         H₁: There is a positive relationship between the order date of a Yeezy and its sale price
 
 # Notes 
-   Fix a day and find the day that has the greatest variation in the cross section, a day where you have the most models being sold
-    Looking for greatest degree of variation fixing the time period, CROSS SECTIONAL ANALYSIS. fix time period of sale
-    An option would be to only include common sizes so you have more observations that are more consistent
-    With plotting the regression lines, In order to see the relationship for each variable, there is a separate ggplot graph for each variable. Note that the binary             dependent 
-    Variables won't have a meaningful regression line because they are discrete values rather than continuous. However, we can still see the difference in the mean
-          of each category by using a plot
+   To prepare the data, I fixed a day and found the day that has the greatest variation in the cross section. This would be a day where there is the most models being sold. 
+   
+# Dummy Variable Notes  
+   In the R code, I ran a few analyses using dummy variables in order to see which models appreciated faster than others. These analyses are not tied to the final product, but the method is there if I wanted to compare models. To set up the dummy variables, I made a column for each sneaker model, and filled the columns with alternating 1s and 0s so I can toggle on and off certain models for a regression analysis. 
+   
+   For this method, I treated the Beluga-2pt0 as the base case model, and compared all other sneaker models to the Beluga. This analysis was mostly exploratory, but I found that the only sneaker that had a positive coefficient was the Yeezy 350 v2 Static Reflective. It is the only sneaker to appreciate in value over time, and this is further shown through a bivariate regression with sale price. Results shown below
+   
+    summary(lm(`Sale Price` ~ Blue_Tint + Butter + Cream_White + Frozen_Yellow + Sesame + Static + Static_Reflective+ Zebra, data = shoestotal))
+    summary(lm(`Sale Price` ~ Static_Reflective, data = shoestotal))
+   
+
 
 # Proposed Plan
    Find greatest number of observations on a given day, fix time, find sale date that gives largest # of observations of each make
@@ -99,6 +104,9 @@ My analysis only focuses on Yeezy 350 v2's so I can control for brand preference
 # Screenshots
 Include logo/demo screenshot etc.
 
+   For the ggplots for the binary regressors, the regression line will not be meaningful because these variables contain discrete values rather than continuous. However, the graphs are still beneficial in order to see the difference in the mean price of the two cases (1vs0).
+   
+   
 # Continued Analysis
    ### Benefits and drawbacks of log transformations
         As shown in this plot below
