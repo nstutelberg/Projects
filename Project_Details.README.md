@@ -4,26 +4,29 @@ This project explores that determinants of the price of luxury sneakers. The sne
 
 In my cross-sectional analysis, the statistical analysis methods I use are:
 
-    Linear Regression
+   Linear Regression
     
-    Multivariate Regression
+   Multivariate Regression
     
-    AIC (Akaike information criterion)
+   AIC (Akaike information criterion)
     
-    Binary Regressors
+   Binary Regressors
     
-    Interaction effects
+   Interaction effects
     
-    Wald Test
+   Wald Test
     
 # Hypotheses
-    1) Average disposable income per capita is positively related to the average selling price of yeezys. (TABLEAU MEAN OF SELL PRICE AND INCOME)
-    2) Solid color yeezys appreciate faster than multicolored yeezys or striped yeezys (TABLEAU GROUP COLORS AND TAKE AVERAGE OR PLOT TWO LINES IN R)
-    3) Higher shoe size correlates to higher resale price (REGRESSION IN R)
-    4) Later order date (more recent) correlates to higher resale price. (REGRESSION IN R)
+   1) Average disposable income per capita is positively related to the average selling price of yeezys. (TABLEAU MEAN OF SELL PRICE AND INCOME)
+   
+   2) Solid color yeezys appreciate faster than multicolored yeezys or striped yeezys (TABLEAU GROUP COLORS AND TAKE AVERAGE OR PLOT TWO LINES IN R)
+    
+   3) Higher shoe size correlates to higher resale price (REGRESSION IN R)
+    
+   4) Later order date (more recent) correlates to higher resale price. (REGRESSION IN R)
 
 # Notes 
-    Fix a day and find the day that has the greatest variation in the cross section, a day where you have the most models being sold
+   Fix a day and find the day that has the greatest variation in the cross section, a day where you have the most models being sold
     Looking for greatest degree of variation fixing the time period, CROSS SECTIONAL ANALYSIS. fix time period of sale
     An option would be to only include common sizes so you have more observations that are more consistent
     With plotting the regression lines, In order to see the relationship for each variable, there is a separate ggplot graph for each variable. Note that the binary             dependent 
@@ -31,18 +34,18 @@ In my cross-sectional analysis, the statistical analysis methods I use are:
           of each category by using a plot
 
 # Proposed Plan
-    Find greatest number of observations on a given day, fix time, find sale date that gives largest # of observations of each make
+   Find greatest number of observations on a given day, fix time, find sale date that gives largest # of observations of each make
     Find a day with greatest number of observations for each specific shoe, regress price on shoe size and quantity of shoes that was released (probably not available)
 
 # Findings
-    Analysis resulted in the linear regression model found below. I limited the independent variables used in the final model to 3, since with more variables, the less impact each independent variable has, and the more likely it is that I would run into a multicollinearity problem, with two independent variables being highly correlated to each other
+   Analysis resulted in the linear regression model found below. I limited the independent variables used in the final model to 3, since with more variables, the less impact each independent variable has, and the more likely it is that I would run into a multicollinearity problem, with two independent variables being highly correlated to each other
     
-    **Interaction of Variables**
+   **Interaction of Variables**
     Interaction did not work well in the model. I wanted to test whether the relationship between price and days since the sneaker IPO'd was different depending on the color of the sneaker or the pattern of the sneaker. The hypothesis was that the color/pattern would either lead to less price depreciation over time or cause the price to fall faster. 
 
-    **Wald test** - Used as a way to find out if explanatory variables in the model were significant.
+   **Wald test** - Used as a way to find out if explanatory variables in the model were significant.
     
-    Wald test revealed that the variables chosen for the final regression model are good fits for the model, and confirmed that Shoe Size is a poor predictor of the price of the sneaker. Through running the wald test for each of the variables in the final regression, I found that the p-value was less than 0.05 in all cases excluding the Shoe Size test case. Including statistically significant predictors should lead to better prediction and better model fit, so this test led me to believe that the variables in my model are the best considering the data.
+   Wald test revealed that the variables chosen for the final regression model are good fits for the model, and confirmed that Shoe Size is a poor predictor of the price of the sneaker. Through running the wald test for each of the variables in the final regression, I found that the p-value was less than 0.05 in all cases excluding the Shoe Size test case. Including statistically significant predictors should lead to better prediction and better model fit, so this test led me to believe that the variables in my model are the best considering the data.
     
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
 
