@@ -20,13 +20,29 @@ My analysis only focuses on Yeezy 350 v2's so I can control for brand preference
   -Wald Test
     
 # Hypotheses
-   1) Solid color yeezys appreciate faster than striped yeezys
-      H(U+2070):
-      H<1>:
+   1) Solid color Yeezys appreciate faster than striped Yeezys
+   
+         H₀: A solid colored Yeezy will not have a higher sale price over time in relation to a patterned Yeezy
+      
+         H₁: A solid colored Yeezy will have a higher sale price over time in relation to a patterned Yeezy
     
    2) Dark color yeezys appreciate faster than light color yeezys
-    
-   4) Larger shoe size correlates to higher resale price
+   
+         H₀: A dark colored Yeezy will not have a higher sale price over time in relation to a light colored Yeezy
+      
+        H₁: A dark colored Yeezy will have a higher sale price over time in relation to a light colored Yeezy
+      
+   3) Larger shoe size correlates to higher resale price
+   
+        H₀: There is no relationship or a negative relationship between the size of a Yeezy and its sale price
+      
+        H₁: There is a positive relationship between the size of a Yeezy and its sale price
+      
+   4) A later order date (more recent date) correlates to higher resale price
+   
+        H₀: There is no relationship or a negative relationship between the order date of a Yeezy and its sale price
+      
+        H₁: There is a positive relationship between the order date of a Yeezy and its sale price
 
 # Notes 
    Fix a day and find the day that has the greatest variation in the cross section, a day where you have the most models being sold
