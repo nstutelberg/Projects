@@ -3,7 +3,7 @@
 This project explores the determinants of the price of luxury sneakers. The sneaker resale market was valued at $2 billion in 2019 according to studies done by Statista and Cowen [(Link)](#Links). The most popular sneakers to resell are Adidas and Nikes, with Jordans and Yeezys being some of the most popular sneaker models on the market. 
 
 With me being involved in the sneaker reselling market, I wanted to determine what the key factors were for whether a shoe would appreciate or depreciate over time.
-My analysis only focuses on Yeezy 350 v2's so I can control for brand preference and personal taste when it came to a sneakers silhouette. This project is a cross-sectional analysis of 9 different models of Yeezys, and I sought out the most influential factors behind an increase or decrease in the price of a sneaker in the after-market. The data is pulled directly from https://www.stockx.com, one of the primary sneaker reselling websites for after-market sneakers.
+My analysis only focuses on Yeezy 350 v2's so I can control for brand preference and personal taste when it came to a sneakers' silhouette. This project is a cross-sectional analysis of 9 different models of Yeezys, and I sought out the most influential factors behind an increase or decrease in the price of a sneaker in the after-market. The data is pulled directly from https://www.stockx.com, one of the primary sneaker reselling websites for after-market sneakers.
 
 **In my cross-sectional analysis, the statistical analysis methods I used were:**
   
@@ -25,24 +25,31 @@ My analysis only focuses on Yeezy 350 v2's so I can control for brand preference
          H₀: A solid colored Yeezy will not have a higher sale price over time in relation to a patterned Yeezy
       
          H₁: A solid colored Yeezy will have a higher sale price over time in relation to a patterned Yeezy
+         
+         
     
    2) Dark color yeezys appreciate faster than light color yeezys
    
          H₀: A dark colored Yeezy will not have a higher sale price over time in relation to a light colored Yeezy
       
         H₁: A dark colored Yeezy will have a higher sale price over time in relation to a light colored Yeezy
+        
+        
       
    3) Larger shoe size correlates to higher resale price
    
         H₀: There is no relationship or a negative relationship between the size of a Yeezy and its sale price
       
         H₁: There is a positive relationship between the size of a Yeezy and its sale price
+        
+        
       
    4) A later order date (more recent date) correlates to higher resale price
    
         H₀: There is no relationship or a negative relationship between the order date of a Yeezy and its sale price
       
         H₁: There is a positive relationship between the order date of a Yeezy and its sale price
+        
 
 # Notes 
    To prepare the data, I fixed a day and found the day that has the greatest variation in the cross section. This would be a day where there is the most models being sold. 
