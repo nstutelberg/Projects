@@ -62,6 +62,28 @@ My analysis only focuses on Yeezy 350 v2's so I can control for brand preference
    
      summary(lm(`Log_Sale_Price` ~ `Log_Days_Since_IPO` + `Solid_Stripe` + `Light_Dark`, data = shoestotal))
      
+     Call:
+    lm(formula = Log_Sale_Price ~ Log_Days_Since_IPO + Solid_Stripe + 
+    Light_Dark, data = shoestotal)
+
+    Residuals:
+     Min       1Q   Median       3Q      Max 
+    -0.47714 -0.21684  0.02909  0.19323  0.42467 
+
+    Coefficients:
+                   Estimate Std. Error t value Pr(>|t|)    
+    (Intercept)         5.89969    0.15777  37.395  < 2e-16 ***
+    Log_Days_Since_IPO -0.06099    0.02696  -2.262   0.0241 *  
+    Solid_Stripe        0.24002    0.03804   6.310 5.84e-10 ***
+    Light_Dark          0.30882    0.06023   5.127 4.12e-07 ***
+    ---
+    Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+    Residual standard error: 0.2146 on 536 degrees of freedom
+    Multiple R-squared:  0.3245,	Adjusted R-squared:  0.3207 
+    F-statistic: 85.82 on 3 and 536 DF,  p-value: < 2.2e-16
+
+     
    **Interaction of Variables** -
     Interaction did not work well in the model. I wanted to test whether the relationship between price and days since the sneaker IPO'd was different depending on the color of the sneaker or the pattern of the sneaker. The hypothesis was that the color/pattern would either lead to less price depreciation over time or cause the price to fall faster. 
 
