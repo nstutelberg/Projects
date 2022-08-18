@@ -105,7 +105,7 @@ My analysis only focuses on Yeezy 350 v2's so I can control for brand preference
    Looking into the AIC confirmed that the variables 
    
    **Log Transformation** -
-   Took the natural log of both Sale Price and Days Since IPO. For Sale Price, there are sneakers that resold for $1,000+ before their mass release, and then went down to $250 months later, so the log is used here to more easily view the distribution when there is this much variability in the price. Took the natural log of Days Since IPO since the difference in the first 10-20 days since IPO are significant for the change in price, but once the days are in the hundreds, each additional day is less impactful. Use log to capture this assumption on diminishing returns.
+   Took the natural log of both Sale Price and Days Since IPO. For Sale Price, there are sneakers that resold for $1,000+ before their mass release, and then went down to $250 months later, so the log is used here to more easily view the distribution when there is this much variability in the price. Took the natural log of Days Since IPO since the difference in the first 10-20 days since IPO are significant for the change in price, but once the days are in the hundreds, each additional day is less impactful. Use log to capture this assumption on diminishing returns. In order to interpret the coefficients, I used exponentiated regression coefficients since exponentiation is the inverse of the log function.
    
    
  
@@ -121,12 +121,12 @@ My analysis only focuses on Yeezy 350 v2's so I can control for brand preference
             
   -P value of <2e-16 is the probability of observing a value larger than t (25.28).This value is small enough where the relationship between price and shoe size is unlikely due to chance. 
    
-  -Log_Days_Since_IPO coefficient of -0.06 shows inverse relationship between price and the amount of days since the IPO of the sneaker.
-       For every 1% increase in days since IPO -> 6% unit increase in price
+  -Log_Days_Since_IPO coefficient of -0.06 shows the inverse relationship between price and the amount of days since the IPO of the sneaker. If the ratio of two values of this variable stays the same, the expected ratio of Sale Price stays the same. For example, for a 10% increase in SalePrice, the expected ratio of the Sale Price will be 1.10^(0.06099) which is 1.005830. In this case, we expect a 0.58% decrease in Sale Price when Days Since IPO increases by 10%. This value is more difficult to interpret when compared to a model where the log is taken off from Days Since IPO, but I believe the log is important here, since the relative importance of the days leans heavily toward those first days after a shoe releases. If a log were not included, the interpretation would simply be: For every one day increase in days since the IPO of the sneaker, Sale Price decreases by x. And in running a bivariate regression with just Sale Price and Days Since IPO, I got x = -$0.16
+
        
-  -Solid_Stripe coefficient of 0.24 is the ratio of the geometric mean for the solid group to the geometric mean for the stripe group
+  -Solid_Stripe coefficient of 0.24 is the ratio of the geometric mean for the solid group to the geometric mean for the stripe group. In this case, exponentiated coefficient is the ratio of the geometric mean for the solid group to the geometric mean for the stripe group. The expected percent increase in geometric mean from the solid group to stripe group is 27.13% holding other variables constant, since e^(0.24002) = 1.27127458.
   
-  -Light_Dark coefficient of 0.31 is the ratio of the geometric mean for the light group to the geometric mean for the stripe group
+  -Light_Dark coefficient of 0.31 is the ratio of the geometric mean for the light group to the geometric mean for the dark group. The exponentiated coefficient is also the ratio of the geometric means. The expected percent increase in geometric mean from the light group to dark group is 36.18% holding other variables constant, since e^(0.0.30882) = 1.36181722.
 
   -Residual standard error of 254.5 is measuring the quality of the regression fit. It's the avg amount that the price will deviate from regression line (97,866 df)
        Given the mean price is $361.21 and the residual standard error is 254.5, the percentage error (the % any prediction would still be off by) is 70.46%
