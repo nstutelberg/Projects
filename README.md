@@ -154,7 +154,7 @@ My analysis only focuses on Yeezy 350 v2's so I can control for brand preference
 
   !-Residual standard error of 0.21 is measuring the quality of the regression fit. It's the avg amount that the price will deviate from regression line (536 df). Looking for smaller errors on average than the best model previously fitted. 
 
-  -R Squared of 0.3245 shows that our predictors variables are accounting 32.45% of the total variability in the Sale Price of a sneaker. This is quite low and means there are other factors that are not incorporated in the model. Potential predictor variables to be added in the future are detailed here: [(Link)](#FutureAnalysis)
+  -R Squared of 0.3245 shows that our predictors variables are accounting 32.45% of the total variability in the Sale Price of a sneaker. This is quite low and means there are other factors that are not incorporated in the model. Potential predictor variables to be added in the future are detailed here: [(Link)](#Future%20Analysis)
 
   -F statistic of 85.82 is indicating whether there is a relationship between Sale Price and the selected predictor variables. F statistic is significantly larger than 1 so we can infer a relationship.
  
