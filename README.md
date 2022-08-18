@@ -101,9 +101,40 @@ My analysis only focuses on Yeezy 350 v2's so I can control for brand preference
    **Wald test**  -
    Wald test revealed that the variables chosen for the final regression model are good fits for the model, and confirmed that Shoe Size is a poor predictor of the price of the sneaker. Through running the wald test for each of the variables in the final regression, I found that the p-value was less than 0.05 in all cases excluding the Shoe Size test case. Including statistically significant predictors should lead to better prediction and better model fit, so this test led me to believe that the variables in my model are the best considering the data.
    
-   **AIC** -
-   Looking into the AIC confirmed that the variables 
+    Chi-squared test for Log_Days_Since_IPO:
+    X2 = 5.1, df = 1, P(> X2) = 0.024
+    
+    Chi-squared test for Solid_Stripe:
+    X2 = 39.8, df = 1, P(> X2) = 2.8e-10
+    
+    Chi-squared test for Light_Dark:
+    X2 = 26.3, df = 1, P(> X2) = 2.9e-07
    
+   **AIC** -
+   Looking into the AIC confirmed which variables are the best for model fit. To run the test, 
+   
+   Initial Model: 
+   
+        lm(`Log_Sale_Price` ~ `Shoe Size` + `Shoe_Size_Squared` + `Log_Days_Since_IPO` + `Interaction_Color_Stripe`, data = shoestotal)  
+   
+                                    K   AICc Delta_AICc AICcWt Cum.Wt     LL
+        No Shoe Size                5 -75.93       0.00   0.37   0.37  43.02
+        All Variables               6 -75.76       0.17   0.34   0.70  43.96
+        No Shoe Size Squared        5 -75.52       0.41   0.30   1.00  42.82
+        No Color Stripe Interaction 5 -50.83      25.10   0.00   1.00  30.47
+        No Log Days Since IPO       5  71.44     147.36   0.00   1.00 -30.66
+   Final Model:
+   
+        lm(`Log_Sale_Price` ~ `Shoe Size` + `Log_Days_Since_IPO` + `Light_Dark` +`Solid_Stripe`, data = shoestotal)
+   
+                              K    AICc Delta_AICc AICcWt Cum.Wt    LL
+        No Shoe Size          5 -123.30       0.00   0.60   0.60 66.71
+        All Variables         6 -121.99       1.30   0.31   0.92 67.08
+        No Log Days Since IPO 5 -119.30       3.99   0.08   1.00 64.71
+        No Light_Dark         5  -97.79      25.51   0.00   1.00 53.95
+        No Solid_Stripe       5  -85.29      38.01   0.00   1.00 47.70
+
+
    **Log Transformation** -
    Took the natural log of both Sale Price and Days Since IPO. For Sale Price, there are sneakers that resold for $1,000+ before their mass release, and then went down to $250 months later, so the log is used here to more easily view the distribution when there is this much variability in the price. Took the natural log of Days Since IPO since the difference in the first 10-20 days since IPO are significant for the change in price, but once the days are in the hundreds, each additional day is less impactful. Use log to capture this assumption on diminishing returns. In order to interpret the coefficients, I used exponentiated regression coefficients since exponentiation is the inverse of the log function.
    
@@ -159,7 +190,7 @@ My analysis only focuses on Yeezy 350 v2's so I can control for brand preference
 
 
 # Future Analysis
-   Due to the model Rsquared being 0.32, and there is still a significant amount of variation in the dependent variable that is not accounted for. 
+   Due to the model Rsquared being 0.32, there is still a significant amount of variation in the dependent variable that is not accounted for. 
    
    In future research, these are a few ideas I would pursue:
    
