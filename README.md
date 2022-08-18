@@ -221,23 +221,7 @@ First set of visualizations show the general trends of two different models of s
 
    For the ggplots for the binary regressors, the regression line will not be meaningful because these variables contain discrete values rather than continuous. However, the graphs are still beneficial in order to see the difference in the mean price of the two cases (1vs0).
    
-    FinalPlot1 <- ggplot(shoestotal, aes(x = `Log_Days_Since_IPO`, y = `Log_Sale_Price`)) +
-         geom_point() + geom_smooth(method = lm) +
-         theme_economist_white()
-
-    FinalPlot2 <- ggplot(shoestotal, aes(x = `Days_Since_IPO`, y = `Sale Price`)) +
-         geom_point() + geom_smooth(method = lm) +
-         theme_economist_white()
-
-    FinalPlot3 <- ggplot(shoestotal, aes(x = `Light_Dark`, y = `Sale Price`)) +
-         geom_point() + geom_smooth(method = lm) +
-         theme_economist_white()
-
-    FinalPlot4 <- ggplot(shoestotal, aes(x = `Solid_Stripe`, y = `Sale Price`)) +
-         geom_point() + geom_smooth(method = lm) +
-         theme_economist_white()
-
-    ggarrange(FinalPlot1, FinalPlot2, FinalPlot3, FinalPlot4)
+![6880FBDD-D934-48A3-9A19-22CB717BFA73](https://user-images.githubusercontent.com/66582795/185456033-3290da09-6b79-497e-9303-1528af7e618b.jpeg)
          
 
 
