@@ -60,9 +60,8 @@ My analysis only focuses on Yeezy 350 v2's so I can control for brand preference
 # Findings
    Analysis resulted in the linear regression model found below. I limited the independent variables used in the final model to 3. With more variables, the less impact each independent variable has, and the more likely it is that I would run into a multicollinearity problem. 
   
-**Variable definitions:**
-  
-  
+**Variable Definitions:**
+
   
    Sale Price - Price that a sneaker sold for on StockX (after-market resell website).
   
@@ -97,21 +96,15 @@ My analysis only focuses on Yeezy 350 v2's so I can control for brand preference
     F-statistic: 85.82 on 3 and 536 DF,  p-value: < 2.2e-16
 
      
-   **Interaction of Variables** -
-    Interaction did not work well in the model. I wanted to test whether the relationship between price and days since the sneaker IPO'd was different depending on the color of the sneaker or the pattern of the sneaker. The hypothesis was that the color/pattern would either lead to less price depreciation over time or cause the price to fall faster. 
+   **Selection of Precitor Variables** -
+    Interaction did not work well in the model. The interpretation wasn't as straightforward since there are 4 qualitative variables that distinguish the sneakers (light color, dark color, solid, stripe). As an alternative, I broke out the interaction into two different variables. Also, Shoe Size Squared was initially added to test if there was a quadratic pattern with regards to shoe size, but this variable was removed from the model because of it's poor performance in the regression tests. There were also log transformations of two variables, and the details are below.
+    
+   **Log Transformation** -
+   Took the natural log of both Sale Price and Days Since IPO. For Sale Price, there are sneakers that resold for $1,000+ before their mass release, and then went down to $250 months later, so the log is used here to more easily view the distribution when there is this much variability in the price. Took the natural log of Days Since IPO since the difference in the first 10-20 days since IPO are significant for the change in price, but once the days are in the hundreds, each additional day is less impactful. Use log to capture this assumption on diminishing returns. In order to interpret the coefficients, I used exponentiated regression coefficients since exponentiation is the inverse of the log function.
 
    **AIC** -
-   Looking into the AIC confirmed which variables are the best for model fit. AIC calculation to evaluate how well the model is fitting the data. Comparing various combinations of dependent variables to see which has the best fit. Trying to find the variables that explain the greatest amount of variation using the fewest independent variables as possible. smaller the better
-   
-        Initial Model: lm(`Log_Sale_Price` ~ `Shoe Size` + `Shoe_Size_Squared` + `Log_Days_Since_IPO` + `Interaction_Color_Stripe`, data = shoestotal)  
-   
-                                    K   AICc Delta_AICc AICcWt Cum.Wt     LL
-        No Shoe Size                5 -75.93       0.00   0.37   0.37  43.02
-        All Variables               6 -75.76       0.17   0.34   0.70  43.96
-        No Shoe Size Squared        5 -75.52       0.41   0.30   1.00  42.82
-        No Color Stripe Interaction 5 -50.83      25.10   0.00   1.00  30.47
-        No Log Days Since IPO       5  71.44     147.36   0.00   1.00 -30.66
-   
+   Looking into the AIC confirmed which variables are the best for model fit. I compared various combinations of dependent variables to see which had the best fit and which combination of variables led to the smallest AICc value. The calculation uses the model’s maximum likelihood estimation (log-likelihood) as a measure of fit. The model with the maximum likelihood and lowest AIC is the one that fits the data the best. From the results below, we can see that taking out shoe size leads to the greatest AICc value, and this finding was also mirrored in my first run at an AIC calculation with my initial regression model. 
+
         Final Model: lm(`Log_Sale_Price` ~ `Shoe Size` + `Log_Days_Since_IPO` + `Light_Dark` +`Solid_Stripe`, data = shoestotal)
    
                               K    AICc Delta_AICc AICcWt Cum.Wt    LL
@@ -120,6 +113,14 @@ My analysis only focuses on Yeezy 350 v2's so I can control for brand preference
         No Log Days Since IPO 5 -119.30       3.99   0.08   1.00 64.71
         No Light_Dark         5  -97.79      25.51   0.00   1.00 53.95
         No Solid_Stripe       5  -85.29      38.01   0.00   1.00 47.70
+
+        Initial Model: lm(`Log_Sale_Price` ~ `Shoe Size` + `Shoe_Size_Squared` + `Log_Days_Since_IPO` + `Interaction_Color_Stripe`, data = shoestotal) 
+                                    K   AICc Delta_AICc AICcWt Cum.Wt     LL
+        No Shoe Size                5 -75.93       0.00   0.37   0.37  43.02
+        All Variables               6 -75.76       0.17   0.34   0.70  43.96
+        No Shoe Size Squared        5 -75.52       0.41   0.30   1.00  42.82
+        No Color Stripe Interaction 5 -50.83      25.10   0.00   1.00  30.47
+        No Log Days Since IPO       5  71.44     147.36   0.00   1.00 -30.66
 
 
    **Wald test**  -
@@ -133,11 +134,6 @@ My analysis only focuses on Yeezy 350 v2's so I can control for brand preference
     
     Chi-squared test for Light_Dark:
     X2 = 26.3, df = 1, P(> X2) = 2.9e-07
-   
-
-   **Log Transformation** -
-   Took the natural log of both Sale Price and Days Since IPO. For Sale Price, there are sneakers that resold for $1,000+ before their mass release, and then went down to $250 months later, so the log is used here to more easily view the distribution when there is this much variability in the price. Took the natural log of Days Since IPO since the difference in the first 10-20 days since IPO are significant for the change in price, but once the days are in the hundreds, each additional day is less impactful. Use log to capture this assumption on diminishing returns. In order to interpret the coefficients, I used exponentiated regression coefficients since exponentiation is the inverse of the log function.
-   
    
  
 # Regression Model
@@ -240,6 +236,8 @@ Compare the above model to the final model above[(Link)](#Findings). The Rsquare
      
 # Visualizations
 
+First set of visualizations show the general trends of two different models of sneakers. These two example graphs provide some context around the trending prices of these sneakers over time.
+
     ButterPlot <- ggplot(Butter, aes(x = `Order Date`, y = `Sale Price`, color = `Shoe Size`)) +
         geom_point() + geom_smooth(method = "lm") +
         ggtitle("Sale Prices for Yeezy 350 v2 Butter") +
@@ -272,6 +270,24 @@ Compare the above model to the final model above[(Link)](#Findings). The Rsquare
       ggarrange(ButterPlot, ButterPlotLog, FrozenPlot, FrozenPlotLog)
 
    For the ggplots for the binary regressors, the regression line will not be meaningful because these variables contain discrete values rather than continuous. However, the graphs are still beneficial in order to see the difference in the mean price of the two cases (1vs0).
+   
+    FinalPlot1 <- ggplot(shoestotal, aes(x = `Log_Days_Since_IPO`, y = `Log_Sale_Price`)) +
+         geom_point() + geom_smooth(method = lm) +
+         theme_economist_white()
+
+    FinalPlot2 <- ggplot(shoestotal, aes(x = `Days_Since_IPO`, y = `Sale Price`)) +
+         geom_point() + geom_smooth(method = lm) +
+         theme_economist_white()
+
+    FinalPlot3 <- ggplot(shoestotal, aes(x = `Light_Dark`, y = `Sale Price`)) +
+         geom_point() + geom_smooth(method = lm) +
+         theme_economist_white()
+
+    FinalPlot4 <- ggplot(shoestotal, aes(x = `Solid_Stripe`, y = `Sale Price`)) +
+         geom_point() + geom_smooth(method = lm) +
+         theme_economist_white()
+
+    ggarrange(FinalPlot1, FinalPlot2, FinalPlot3, FinalPlot4)
         
 
 ## Installation
