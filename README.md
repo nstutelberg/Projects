@@ -96,7 +96,7 @@ My analysis only focuses on Yeezy 350 v2's so I can control for brand preference
     F-statistic: 85.82 on 3 and 536 DF,  p-value: < 2.2e-16
 
      
-   **Selection of Precitor Variables** -
+   **Selection of Predictor Variables** -
     Interaction did not work well in the model. The interpretation wasn't as straightforward since there are 4 qualitative variables that distinguish the sneakers (light color, dark color, solid, stripe). As an alternative, I broke out the interaction into two different variables. Also, Shoe Size Squared was initially added to test if there was a quadratic pattern with regards to shoe size, but this variable was removed from the model because of it's poor performance in the regression tests. There were also log transformations of two variables, and the details are below.
     
    **Log Transformation** -
