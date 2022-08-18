@@ -141,7 +141,7 @@ My analysis only focuses on Yeezy 350 v2's so I can control for brand preference
        
   -Intercept coefficient of 5.90 is the expected mean for Log_Sale_Price for Solid (Solid_Stripe = 0) and Light (Light_Dark = 0) when Log_Days_Since_IPO is equal to 0. 
        
-  - The standard errors are the estimated standard deviations of the errors in estimating them. The standard errors are smaller than the coefficients in every case except Log_Days_Since_IPO, where the coefficient is showing the inverse relationship. This is a good sign because the larger the standard error of the coefficient estimate, the less precise the measurement of the coefficient is. 
+  -The standard errors are the estimated standard deviations of the errors in estimating them. The standard errors are smaller than the coefficients in every case except Log_Days_Since_IPO, where the coefficient is showing the inverse relationship. This is a good sign because the larger the standard error of the coefficient estimate, the less precise the measurement of the coefficient is. 
             
   -The p-values are the probabilities of observing a value larger than the respective t values. This value is small enough for all predictor variables where it can be concluded that these variables are likely to be a meaningful addition to the model because changes in the predictor's value are related to changed in the response variable. Solid_Stripe and Light_Dark reach a 99%+ confidence level in this assumption, and Log_Days_Since_IPO reaches a 95% confidence level.
    
