@@ -188,36 +188,7 @@ My analysis only focuses on Yeezy 350 v2's so I can control for brand preference
 
 First set of visualizations show the general trends of two different models of sneakers. These two example graphs provide some context around the trending prices of these sneakers over time.
 
-    ButterPlot <- ggplot(Butter, aes(x = `Order Date`, y = `Sale Price`, color = `Shoe Size`)) +
-        geom_point() + geom_smooth(method = "lm") +
-        ggtitle("Sale Prices for Yeezy 350 v2 Butter") +
-        labs(x = "Date", y = "Sale Price") +
-        theme_economist_white()
-
-    FrozenPlot <- ggplot(Frozen, aes(x = `Order Date`, y = `Sale Price`, color = `Shoe Size`)) +
-        geom_point() + geom_smooth(method = lm) +
-        ggtitle("Sale Prices for Yeezy 350 v2 Frozen") +
-        labs(x = "Date", y = "Sale Price") +
-        theme_economist_white()
-      
-      
-    ButterPlotLog <- ggplot(Butter, aes(x = `Order Date`, y = `Sale Price`, color = `Shoe Size`)) +
-        geom_point() + geom_smooth(method = lm) +
-        ggtitle("Sale Prices for Yeezy 350 v2 Butter") +
-        labs(x = "Date", y = "Sale Price") +
-        scale_y_log10() +
-        scale_x_date(date_breaks = "2 months", date_labels = "%b-%y") +
-        theme_economist_white()
-
-    FrozenPlotLog <- ggplot(Frozen, aes(x = `Order Date`, y = `Sale Price`, color = `Shoe Size`)) +
-         geom_point() + geom_smooth(method = lm) +
-         ggtitle("Sale Prices for Yeezy 350 v2 Frozen") +
-         labs(x = "Date", y = "Sale Price") +
-         scale_y_log10() +
-         scale_x_date(date_breaks = "2 months", date_labels = "%b-%y") +
-         theme_economist_white()
-
-      ggarrange(ButterPlot, ButterPlotLog, FrozenPlot, FrozenPlotLog)
+![6340E6BC-6E52-48E8-B705-7A5416C5C256](https://user-images.githubusercontent.com/66582795/185454469-69dea65e-87d6-44c5-8dd0-8fdb24253b26.jpeg)
 
    For the ggplots for the binary regressors, the regression line will not be meaningful because these variables contain discrete values rather than continuous. However, the graphs are still beneficial in order to see the difference in the mean price of the two cases (1vs0).
    
