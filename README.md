@@ -137,13 +137,13 @@ My analysis only focuses on Yeezy 350 v2's so I can control for brand preference
    
  
 # Regression Model
-  -Residuals are the differences between observed response values (price) and the response values that the model predicted (shoe size) on the regression line. To assess model fit, look for a symmetrical distribution across the 5 points on the mean value of 0. With the median of 0.03 being close to zero and the quartile ranges/min/max being relatively symmetrical on both tails, the model appears to be predicting points that land closely to the actual observed points. 
+  -Residuals are the differences between observed response values and the response values that the model predicted on the regression line. To assess model fit, look for a symmetrical distribution across the 5 points on the mean value of 0. With the median of 0.03 being close to zero and the quartile ranges/min/max being relatively symmetrical on both tails, the model appears to be predicting points that land closely to the actual observed points. 
        
-  !-Intercept coefficient of 5.90 is the expected value of the response variable when the predictor variables are 1. The slope is measuring the expected change in the Sale Price when the predictors increase by a fixed percentage. Intercept is the expected mean for Log_Sale_Price for 
+  -Intercept coefficient of 5.90 is the expected mean for Log_Sale_Price for Solid (Solid_Stripe = 0) and Light (Light_Dark = 0) when Log_Days_Since_IPO is equal to 0. 
        
-  !-Standard error of 0.36 is showing average amount that coefficient estimates vary from the avg price (regression line). My standard error is smaller than the coefficient. Say that if we ran the model again, the price should vary by $0.36 in relation to the avg price
+  !- The standard errors are showing the average amount that coefficient estimates vary from the average Sale Price (regression line). The standard errors are smaller than the coefficients in every case except Log_Days_Since_IPO, where the coefficient is showing the inverse relationship. Interpret as if we ran the model again, the Sale Price should vary by x in relation to the average price.
             
-  !-P value of <2e-16 is the probability of observing a value larger than t (25.28).This value is small enough where the relationship between price and shoe size is unlikely due to chance. 
+  -The p-values are the probabilities of observing a value larger than the respective t values. This value is small enough for all predictor variables where it can be concluded that these variables are likely to be a meaningful addition to the model because changes in the predictor's value are related to changed in the response variable. Solid_Stripe and Light_Dark reach a 99%+ confidence level in this assumption, and Log_Days_Since_IPO reaches a 95% confidence level.
    
   -Log_Days_Since_IPO coefficient of -0.06 shows the inverse relationship between price and the amount of days since the IPO of the sneaker. If the ratio of two values of this variable stays the same, the expected ratio of Sale Price stays the same. For example, for a 10% increase in SalePrice, the expected ratio of the Sale Price will be 1.10^(0.06099) which is 1.005830. In this case, we expect a 0.58% decrease in Sale Price when Days Since IPO increases by 10%. This value is more difficult to interpret when compared to a model where the log is taken off from Days Since IPO, but I believe the log is important here, since the relative importance of the days leans heavily toward those first days after a shoe releases. If a log were not included, the interpretation would simply be: For every one day increase in days since the IPO of the sneaker, Sale Price decreases by x. And in running a bivariate regression with just Sale Price and Days Since IPO, I got x = -$0.16
 
@@ -152,12 +152,11 @@ My analysis only focuses on Yeezy 350 v2's so I can control for brand preference
   
   -Light_Dark coefficient of 0.31 is the ratio of the geometric mean for the light group to the geometric mean for the dark group. The exponentiated coefficient is also the ratio of the geometric means. The expected percent increase in geometric mean from the light group to dark group is 36.18% holding other variables constant, since e^(0.0.30882) = 1.36181722.
 
-  !-Residual standard error of 0.21 is measuring the quality of the regression fit. It's the avg amount that the price will deviate from regression line (536 df)
-       Given the mean price is $361.21 and the residual standard error is 254.5, the percentage error (the % any prediction would still be off by) is 70.46%.
+  !-Residual standard error of 0.21 is measuring the quality of the regression fit. It's the avg amount that the price will deviate from regression line (536 df). Looking for smaller errors on average than the best model previously fitted. 
 
-  !-R Squared of 0.3245 shows that our predictors variables are accounting 32.45% of the total variance in the Sale Price of a sneaker.
+  -R Squared of 0.3245 shows that our predictors variables are accounting 32.45% of the total variability in the Sale Price of a sneaker. This is quite low and means there are other factors that are not incorporated in the model. Potential predictor variables to be added in the future are detailed here: [(Link)](#Future Analysis)
 
-  !-F statistic of 85.82 is indicating whether there is a relationship between Sale Price and the selected predictor variables. F statistic is significantly larger than 1 so we can infer a relationship.
+  -F statistic of 85.82 is indicating whether there is a relationship between Sale Price and the selected predictor variables. F statistic is significantly larger than 1 so we can infer a relationship.
  
 # Summary
   The model used includes only statistically significant independent variables, with p-values for the binary regressors easily meeting a 99% confidence level, and Days Since IPO meeting a 95% confidence level. 
