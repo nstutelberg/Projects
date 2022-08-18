@@ -138,19 +138,28 @@ My analysis only focuses on Yeezy 350 v2's so I can control for brand preference
 # Summary
   The model used includes only statistically significant independent variables, with p-values for the binary regressors easily meeting a 99% confidence level, and Days Since IPO meeting a 95% confidence level. 
   
+  Hypothesis #1 - Reject Null
   
-  There is a positive relationship between Solid_Stripe and Sale Price, meaning that solid color Yeezys are garnering higher resale prices than striped Yeezys. Reject Null in favor of Alternative for Hypothesis #1.
+   There is a positive relationship between Solid_Stripe and Sale Price, meaning that solid color Yeezys are garnering higher resale prices than striped Yeezys.   Reject Null in favor of Alternative.
   
-  There is a positive relationship between Light_Dark and Sale Price, meaing that dark color Yeezys are garnering higher resale prices than light colored Yeezys.
+  Hypothesis #2 - Reject Null
   
-  There is a negative relationship between Days Since IPO and Sale Price, meaning over time, as the shoe moves away from it's IPO date, the resell price of the sneaker in the after-market decreases. Fail to reject Null for Hypothesis #4. 
+   There is a positive relationship between Light_Dark and Sale Price, meaing that dark color Yeezys are garnering higher resale prices than light colored Yeezys. Reject Null in favor of Alternative.
+      
+  Hypothesis #3 - Fail to Reject Null
+  
+   There is no statistically significant relationship between Shoe Size and Sale Price. Larger shoe sizes do not correlate with higher resale prices. Fail to reject Null.
+  
+  Hypothesis #4 - Fail to Reject Null
+  
+   There is a negative relationship between Days Since IPO and Sale Price, meaning over time, as the shoe moves away from it's IPO date, the resell price of the sneaker in the after-market decreases. Fail to reject Null.
   
   
 
 
 
 # Future Analysis
-   Due to the model Rsquared being ~ 0.30 depending on if we use log transformation or not, there is still a significant amount of variation in the dependent variable that is not accounted for. 
+   Due to the model Rsquared being 0.32, and there is still a significant amount of variation in the dependent variable that is not accounted for. 
    
    In future research, these are a few ideas I would pursue:
    
