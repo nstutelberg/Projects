@@ -141,7 +141,7 @@ My analysis only focuses on Yeezy 350 v2's so I can control for brand preference
        
   -Intercept coefficient of 5.90 is the expected mean for Log_Sale_Price for Solid (Solid_Stripe = 0) and Light (Light_Dark = 0) when Log_Days_Since_IPO is equal to 0. 
        
-  !- The standard errors are showing the average amount that coefficient estimates vary from the average Sale Price (regression line). The standard errors are smaller than the coefficients in every case except Log_Days_Since_IPO, where the coefficient is showing the inverse relationship. Interpret as if we ran the model again, the Sale Price should vary by x in relation to the average price.
+  - The standard errors are the estimated standard deviations of the errors in estimating them. The standard errors are smaller than the coefficients in every case except Log_Days_Since_IPO, where the coefficient is showing the inverse relationship. This is a good sign because the larger the standard error of the coefficient estimate, the less precise the measurement of the coefficient is. 
             
   -The p-values are the probabilities of observing a value larger than the respective t values. This value is small enough for all predictor variables where it can be concluded that these variables are likely to be a meaningful addition to the model because changes in the predictor's value are related to changed in the response variable. Solid_Stripe and Light_Dark reach a 99%+ confidence level in this assumption, and Log_Days_Since_IPO reaches a 95% confidence level.
    
@@ -152,7 +152,7 @@ My analysis only focuses on Yeezy 350 v2's so I can control for brand preference
   
   -Light_Dark coefficient of 0.31 is the ratio of the geometric mean for the light group to the geometric mean for the dark group. The exponentiated coefficient is also the ratio of the geometric means. The expected percent increase in geometric mean from the light group to dark group is 36.18% holding other variables constant, since e^(0.0.30882) = 1.36181722.
 
-  !-Residual standard error of 0.21 is measuring the quality of the regression fit. It's the avg amount that the price will deviate from regression line (536 df). Looking for smaller errors on average than the best model previously fitted. 
+  -Residual standard error of 0.21 is measuring the quality of the regression fit. It's the average amount that the price will deviate from regression line (536 df). Looking for smaller errors on average than the best model previously fitted. In my initial model with Shoe Size and no log transformations, the RSE was 81.67. The lower RSE in the final model, although log transformed, is a sign of good model fit and that the data points are more closely packed aroudn the fitted regression line.
 
   -R Squared of 0.3245 shows that our predictors variables are accounting 32.45% of the total variability in the Sale Price of a sneaker. This is quite low and means there are other factors that are not incorporated in the model. Potential predictor variables to be added in the future are detailed in the Future Analysis section.
 
