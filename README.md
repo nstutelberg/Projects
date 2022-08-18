@@ -172,7 +172,30 @@ My analysis only focuses on Yeezy 350 v2's so I can control for brand preference
    For this method, I treated the Beluga-2pt0 as the base case model, and compared all other sneaker models to the Beluga. This analysis was mostly exploratory, but I found that the only sneaker that had a positive coefficient was the Yeezy 350 v2 Static Reflective. It is the only sneaker to appreciate in value over time, and this is further shown through a bivariate regression with sale price. Results shown below
    
     summary(lm(`Sale Price` ~ Blue_Tint + Butter + Cream_White + Frozen_Yellow + Sesame + Static + Static_Reflective+ Zebra, data = shoestotal))
-    summary(lm(`Sale Price` ~ Static_Reflective, data = shoestotal))
+    
+    Residuals:
+         Min       1Q   Median       3Q      Max 
+    -102.315  -13.486   -2.482   13.518  132.000 
+
+    Coefficients:
+                      Estimate Std. Error t value Pr(>|t|)    
+    (Intercept)        429.250      8.526  50.345  < 2e-16 ***
+    Blue_Tint          -73.500     11.279  -6.516 1.67e-10 ***
+    Butter            -193.250     11.439 -16.894  < 2e-16 ***
+    Cream_White       -171.038      9.957 -17.179  < 2e-16 ***
+    Frozen_Yellow     -162.750      9.998 -16.278  < 2e-16 ***
+    Sesame            -160.250     10.785 -14.859  < 2e-16 ***
+    Static            -121.768      8.892 -13.694  < 2e-16 ***
+    Static_Reflective   53.065      8.760   6.058 2.62e-09 ***
+    Zebra              -91.250      9.353  -9.756  < 2e-16 ***
+    ---
+    Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+    Residual standard error: 29.54 on 531 degrees of freedom
+    Multiple R-squared:  0.9081,	Adjusted R-squared:  0.9067 
+    F-statistic: 655.5 on 8 and 531 DF,  p-value: < 2.2e-16
+
+Compare the above model to the final model above[(Link)](#Findings). The Rsquared of 0.90 is much higher than the Rsquared of 0.32 in the final model. However, there are too many variables to draw conclusive results from, and also the independent variables are only related to some select sneaker models, where I am trying find predictors that can be generalized to all pairs of Yeezy sneakers and to an extent, other brands of sneakers. 
     
     summary(lm(`Sale Price` ~ `Shoe Size` + `Days_Since_IPO` + `Solid_Stripe` + `Light_Dark`, data = shoestotal))
   
@@ -211,17 +234,10 @@ My analysis only focuses on Yeezy 350 v2's so I can control for brand preference
       ggarrange(ButterPlot, ButterPlotLog, FrozenPlot, FrozenPlotLog)
 
    For the ggplots for the binary regressors, the regression line will not be meaningful because these variables contain discrete values rather than continuous. However, the graphs are still beneficial in order to see the difference in the mean price of the two cases (1vs0).
-   
-   
-# Continued Analysis
-   ### Benefits and drawbacks of log transformations
-        As shown in this plot below
         
 
 ## Installation
    To run code, an updated version of R and RStudio is needed. Link is here: https://cran.r-project.org/
-
-#### Anything else that seems useful
 
 ## Links
 Statista study: https://www.statista.com/statistics/1202148/sneaker-resale-market-value-us-and-global/
