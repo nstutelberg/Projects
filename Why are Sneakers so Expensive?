@@ -101,6 +101,20 @@ Butter <- shoes %>%
   filter(grepl(pattern = ".*Butter", shoes$`Sneaker Name`))
 Frozen <- shoes %>%
   filter(grepl(pattern = ".*Frozen.*", shoes$`Sneaker Name`))
+Beluga <- shoes %>%
+  filter(grepl(pattern = ".*Beluga-2pt0$", shoes$`Sneaker Name`))
+Zebra <- shoes %>%
+  filter(grepl(pattern = ".*Zebra$", shoes$`Sneaker Name`))
+Bluetint <- shoes %>%
+  filter(grepl(pattern = ".*Blue-Tint$", shoes$`Sneaker Name`))
+Cream <- shoes %>%
+  filter(grepl(pattern = ".*Cream-White$", shoes$`Sneaker Name`))
+Sesame <- shoes %>%
+  filter(grepl(pattern = ".*Sesame$", shoes$`Sneaker Name`))
+StaticNonRef <- shoes %>%
+  filter(grepl(pattern = ".*Static$", shoes$`Sneaker Name`))
+StaticRef <- shoes %>%
+  filter(grepl(pattern = ".*Static-Reflective$", shoes$`Sneaker Name`))
 
 
     #now have a few sneakers in separate dataframes to test the statistical methods. Graphing template below for using ggplot to plot a regression line
@@ -109,13 +123,13 @@ Frozen <- shoes %>%
 
 ButterPlot <- ggplot(Butter, aes(x = `Order Date`, y = `Sale Price`, color = `Shoe Size`)) +
   geom_point() + geom_smooth(method = "lm") +
-  ggtitle("Sale Prices for Yeezy 350 v2 Butter") +
+  ggtitle("Yeezy Butter Sale Price over time") +
   labs(x = "Date", y = "Sale Price") +
   theme_economist_white()
 
 FrozenPlot <- ggplot(Frozen, aes(x = `Order Date`, y = `Sale Price`, color = `Shoe Size`)) +
   geom_point() + geom_smooth(method = lm) +
-  ggtitle("Sale Prices for Yeezy 350 v2 Frozen") +
+  ggtitle("Yeezy Frozen Sale Price over time") +
   labs(x = "Date", y = "Sale Price") +
   theme_economist_white()
 
@@ -124,7 +138,7 @@ FrozenPlot <- ggplot(Frozen, aes(x = `Order Date`, y = `Sale Price`, color = `Sh
             #notice how zebra had more variation in the price data so logging the dependent variable made the graph easier to read. However, for Butter, the log transformation would not be as needed.
 ButterPlotLog <- ggplot(Butter, aes(x = `Order Date`, y = `Sale Price`, color = `Shoe Size`)) +
   geom_point() + geom_smooth(method = lm) +
-  ggtitle("Sale Prices for Yeezy 350 v2 Butter") +
+  ggtitle("Yeezy Butter Log Sale Price over time") +
   labs(x = "Date", y = "Sale Price") +
   scale_y_log10() +
   scale_x_date(date_breaks = "2 months", date_labels = "%b-%y") +
@@ -132,13 +146,13 @@ ButterPlotLog <- ggplot(Butter, aes(x = `Order Date`, y = `Sale Price`, color = 
 
 FrozenPlotLog <- ggplot(Frozen, aes(x = `Order Date`, y = `Sale Price`, color = `Shoe Size`)) +
   geom_point() + geom_smooth(method = lm) +
-  ggtitle("Sale Prices for Yeezy 350 v2 Frozen") +
+  ggtitle("Yeezy Frozen Log Sale Price over time") +
   labs(x = "Date", y = "Sale Price") +
   scale_y_log10() +
   scale_x_date(date_breaks = "2 months", date_labels = "%b-%y") +
   theme_economist_white()
 
-ggarrange(ButterPlot, ButterPlotLog, FrozenPlot, FrozenPlotLog)
+ggarrange(ButterPlot, FrozenPlot, ButterPlotLog, FrozenPlotLog)
 
 
 
@@ -228,7 +242,9 @@ summary(lm(`Sale Price` ~  `Shoe Size` + `Days_Since_IPO` + `Blue_Tint` + `Butte
            #results - High Rsquared at 92.1%, but there are so many independent variables here that the Rsquared is naturally going to be higher
                 #hard to determine which variables are accounting for the most variation in the independent variable. Need to scale the model down
 
-
+            #regression with just the shoe colors to compare to base case of Beluga 
+summary(lm(`Sale Price` ~ Blue_Tint + Butter + Cream_White + Frozen_Yellow + Sesame + Static + Static_Reflective+ Zebra, data = shoestotal))
+      
            #regression with the categorical columns. Stripe and Light_Dark only have two options so they are acting as binary regressors in this case
 summary(lm(`Sale Price` ~ `Shoe Size` + `Days_Since_IPO` + `Solid_Stripe` + `Light_Dark`, data = shoestotal))
                 #results - 29.17% Rsquared, but also using less variables. Stripe and Light_Dark having the most impact on the price here
@@ -281,20 +297,28 @@ AIC1 <- lm(`Log_Sale_Price` ~ `Shoe Size` + `Shoe_Size_Squared` + `Log_Days_Sinc
     #no shoe size
 AIC2 <- lm(`Log_Sale_Price` ~ `Shoe_Size_Squared` + `Log_Days_Since_IPO` + `Interaction_Color_Stripe`, data = shoestotal)
 
-    #no shoe size/squared + break out interaction 
-AIC3 <- lm(`Log_Sale_Price` ~ `Log_Days_Since_IPO` + `Light_Dark` +`Solid_Stripe`, data = shoestotal)
-
     #no shoe squared
-AIC4 <- lm(`Log_Sale_Price` ~ `Shoe Size` + `Log_Days_Since_IPO` + `Interaction_Color_Stripe`, data = shoestotal) 
+AIC3 <- lm(`Log_Sale_Price` ~ `Shoe Size` + `Log_Days_Since_IPO` + `Interaction_Color_Stripe`, data = shoestotal) 
 
     #no log ipo
-AIC5 <- lm(`Log_Sale_Price` ~ `Shoe Size` + `Shoe_Size_Squared` + `Interaction_Color_Stripe`, data = shoestotal)
+AIC4 <- lm(`Log_Sale_Price` ~ `Shoe Size` + `Shoe_Size_Squared` + `Interaction_Color_Stripe`, data = shoestotal)
 
     #no interaction
-AIC6 <- lm(`Log_Sale_Price` ~ `Shoe Size` + `Shoe_Size_Squared` + `Log_Days_Since_IPO`, data = shoestotal)
+AIC5 <- lm(`Log_Sale_Price` ~ `Shoe Size` + `Shoe_Size_Squared` + `Log_Days_Since_IPO`, data = shoestotal)
 
-models <- list(AIC1, AIC2, AIC3, AIC4, AIC5, AIC6)
-aictab(cand.set = models, modnames = c('All Variables', 'No Shoe Size', 'No Shoe Size/Squared + Break out Interaction ', 'No Shoe Size Squared', 'No Log Days Since IPO', 'No Color Stripe Interaction'))
+models <- list(AIC1, AIC2, AIC3, AIC4, AIC5)
+aictab(cand.set = models, modnames = c('All Variables', 'No Shoe Size', 'No Shoe Size Squared', 'No Log Days Since IPO', 'No Color Stripe Interaction'))
+
+
+    #Break out Interaction to test if these variables are a better fit
+AIC6 <- lm(`Log_Sale_Price` ~ `Shoe Size` + `Log_Days_Since_IPO` + `Light_Dark` +`Solid_Stripe`, data = shoestotal)
+AIC7 <- lm(`Log_Sale_Price` ~ `Log_Days_Since_IPO` + `Light_Dark` +`Solid_Stripe`, data = shoestotal)
+AIC8 <- lm(`Log_Sale_Price` ~ `Shoe Size` + `Light_Dark` +`Solid_Stripe`, data = shoestotal)
+AIC9 <- lm(`Log_Sale_Price` ~ `Shoe Size` + `Log_Days_Since_IPO` + `Solid_Stripe`, data = shoestotal)
+AIC10 <- lm(`Log_Sale_Price` ~ `Shoe Size` + `Log_Days_Since_IPO` + `Light_Dark`, data = shoestotal)
+
+modelsfinal <- list(AIC6, AIC7, AIC8, AIC9, AIC10)
+aictab(cand.set = modelsfinal, modnames = c('All Variables', 'No Shoe Size', 'No Log Days Since IPO', 'No Light_Dark', 'No Solid_Stripe'))
 
       #results - Days Since IPO and the characteristics of the sneaker (Light_Dark, Stripe) appear to be the most influential independent variables in the model, with days since IPO being the most influential
                 #Taking out shoe size/shoe size squared has little impact on the AIC calculation, so in our final regression we will remove this variable.
@@ -326,6 +350,7 @@ summary(lm(`Log_Sale_Price` ~ `Shoe Size` + `Shoe_Size_Squared` + `Log_Days_Sinc
                                                   #Final results + regression (logged and unlogged)
 
 summary(lm(`Sale Price` ~ `Days_Since_IPO` + `Solid_Stripe` + `Light_Dark`, data = shoestotal))
+summary(lm(`Log_Sale_Price` ~ `Days_Since_IPO` + `Solid_Stripe` + `Light_Dark`, data = shoestotal))
 summary(lm(`Log_Sale_Price` ~ `Log_Days_Since_IPO` + `Solid_Stripe` + `Light_Dark`, data = shoestotal))
 
     #effect of just days since IPO
@@ -335,19 +360,25 @@ summary(lm(`Log_Sale_Price` ~ `Log_Days_Since_IPO` + `Solid_Stripe` + `Light_Dar
     #Plotting bivariate regression models to see the relationships. Note that the slope line in Light_Dark and Solid_Stripe should not be interpreted. Instead, look at the start and end points
 FinalPlot1 <- ggplot(shoestotal, aes(x = `Log_Days_Since_IPO`, y = `Log_Sale_Price`)) +
   geom_point() + geom_smooth(method = lm) +
+  ggtitle("Prices of Yeezys from IPO date (Log Model)") +
   theme_economist_white()
 
 FinalPlot2 <- ggplot(shoestotal, aes(x = `Days_Since_IPO`, y = `Sale Price`)) +
   geom_point() + geom_smooth(method = lm) +
+  ggtitle("Prices of Yeezys from IPO date") +
   theme_economist_white()
 
 
 FinalPlot3 <- ggplot(shoestotal, aes(x = `Light_Dark`, y = `Sale Price`)) +
   geom_point() + geom_smooth(method = lm) +
+  ggtitle("Prices of Light vs Dark Colored Yeezys") +
+  labs(subtitle = "Left = Light  |  Right = Dark") +
   theme_economist_white()
 
 FinalPlot4 <- ggplot(shoestotal, aes(x = `Solid_Stripe`, y = `Sale Price`)) +
   geom_point() + geom_smooth(method = lm) +
+  ggtitle("Prices of Solid vs Stripe Patterned Yeezys") +
+  labs(subtitle = "Left = Solid  |  Right = Stripe") +
   theme_economist_white()
 
 ggarrange(FinalPlot1, FinalPlot2, FinalPlot3, FinalPlot4)
@@ -372,7 +403,6 @@ wald.test(Sigma = vcov(modelfinal), b = coef(modelfinal), Terms = 4)
 
 
 
-
-
 #results - not very high Rsquared for any of these models, but when using just a few variables, you can see the affect of these few independent variables in accounting for variability in the sneaker prices
       #Can see that shoe size, whether squared or not, is not a good predictor of resale price. This is likely because both small and large sizes sell for the most money.
+
