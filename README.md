@@ -186,11 +186,11 @@ My analysis only focuses on Yeezy 350 v2's so I can control for brand preference
       
 # Visualizations
 
-First set of visualizations show the general trends of two different models of sneakers. These two example graphs provide some context around the trending prices of these sneakers over time.
+First set of visualizations show the general trends of two different models of sneakers. These two example graphs provide some context around the trending prices of these sneakers over time. Note that these test plots are time series, where the final plots are cross-sectional. Also, see the impact of the log transformation on these graphs, and how the Yeezy Frozen graph is easier to read since the price is normalized.
 
 ![6340E6BC-6E52-48E8-B705-7A5416C5C256](https://user-images.githubusercontent.com/66582795/185454469-69dea65e-87d6-44c5-8dd0-8fdb24253b26.jpeg)
 
-   For the ggplots for the binary regressors, the regression line will not be meaningful because these variables contain discrete values rather than continuous. However, the graphs are still beneficial in order to see the difference in the mean price of the two cases (1vs0).
+   For the bottom two plots with the binary regressors, the regression line will not be meaningful because these variables contain discrete values rather than continuous. However, the graphs are still beneficial in order to see the difference in the mean price of the two cases (1vs0).
    
 ![6880FBDD-D934-48A3-9A19-22CB717BFA73](https://user-images.githubusercontent.com/66582795/185456033-3290da09-6b79-497e-9303-1528af7e618b.jpeg)
          
