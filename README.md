@@ -7,19 +7,19 @@ My analysis only focuses on Yeezy 350 v2's so I can control for brand preference
 
 **In my cross-sectional analysis, the statistical analysis methods I used were:**
   
-  -Linear Regression
+  - Linear Regression
     
-  -Multivariate Regression
+  - Multivariate Regression
     
-  -AIC (Akaike Information Criterion)
+  - AIC (Akaike Information Criterion)
     
-  -Binary Regressors / Dummy Variables
+  - Binary Regressors / Dummy Variables
     
-  -Interaction Effects
+  - Interaction Effects
     
-  -Wald Test
+  - Wald Test
   
-  -Log Transformation
+  - Log Transformation
     
 # Hypotheses
    1) Solid color Yeezys appreciate faster than striped Yeezys
@@ -63,16 +63,16 @@ My analysis only focuses on Yeezy 350 v2's so I can control for brand preference
 **Variable Definitions:**
 
   
-   Sale Price - Price that a sneaker sold for on StockX (after-market resell website).
+   - Sale Price - Price that a sneaker sold for on StockX (after-market resell website).
   
-   Days Since IPO - Amount of days that have passed since the initial release of the sneaker.
+   - Days Since IPO - Amount of days that have passed since the initial release of the sneaker.
   
-   Solid Stripe - Binary regressor with 0 being a solid colored Yeezy (no stripes / one solid color) and 1 being a striped Yeezy (stripes wrapping around entire sneaker).
+   - Solid Stripe - Binary regressor with 0 being a solid colored Yeezy (no stripes / one solid color) and 1 being a striped Yeezy (stripes wrapping around entire sneaker).
   
-   Light Dark - Binary regressor with 0 being a light colored Yeezy (white, yellow, light blue) and 1 being a dark colored yeezy (gray, black, dark brown).
+   - Light Dark - Binary regressor with 0 being a light colored Yeezy (white, yellow, light blue) and 1 being a dark colored yeezy (gray, black, dark brown).
   
    
-     summary(lm(`Log_Sale_Price` ~ `Log_Days_Since_IPO` + `Solid_Stripe` + `Light_Dark`, data = shoestotal))
+    summary(lm(`Log_Sale_Price` ~ `Log_Days_Since_IPO` + `Solid_Stripe` + `Light_Dark`, data = shoestotal))
      
      Call:
     lm(formula = Log_Sale_Price ~ Log_Days_Since_IPO + Solid_Stripe + 
@@ -137,26 +137,26 @@ My analysis only focuses on Yeezy 350 v2's so I can control for brand preference
    
  
 # Regression Model
-  -Residuals are the differences between observed response values and the response values that the model predicted on the regression line. To assess model fit, look for a symmetrical distribution across the 5 points on the mean value of 0. With the median of 0.03 being close to zero and the quartile ranges/min/max being relatively symmetrical on both tails, the model appears to be predicting points that land closely to the actual observed points. 
+  - Residuals are the differences between observed response values and the response values that the model predicted on the regression line. To assess model fit, look for a symmetrical distribution across the 5 points on the mean value of 0. With the median of 0.03 being close to zero and the quartile ranges/min/max being relatively symmetrical on both tails, the model appears to be predicting points that land closely to the actual observed points. 
        
-  -Intercept coefficient of 5.90 is the expected mean for Log_Sale_Price for Solid (Solid_Stripe = 0) and Light (Light_Dark = 0) when Log_Days_Since_IPO is equal to 0. 
+  - Intercept coefficient of 5.90 is the expected mean for Log_Sale_Price for Solid (Solid_Stripe = 0) and Light (Light_Dark = 0) when Log_Days_Since_IPO is equal to 0. 
        
-  -The standard errors are the estimated standard deviations of the errors in estimating them. The standard errors are smaller than the coefficients in every case except Log_Days_Since_IPO, where the coefficient is showing the inverse relationship. This is a good sign because the larger the standard error of the coefficient estimate, the less precise the measurement of the coefficient is. 
+  - The standard errors are the estimated standard deviations of the errors in estimating them. The standard errors are smaller than the coefficients in every case except Log_Days_Since_IPO, where the coefficient is showing the inverse relationship. This is a good sign because the larger the standard error of the coefficient estimate, the less precise the measurement of the coefficient is. 
             
-  -The p-values are the probabilities of observing a value larger than the respective t values. This value is small enough for all predictor variables where it can be concluded that these variables are likely to be a meaningful addition to the model because changes in the predictor's value are related to changed in the response variable. Solid_Stripe and Light_Dark reach a 99%+ confidence level in this assumption, and Log_Days_Since_IPO reaches a 95% confidence level.
+  - The p-values are the probabilities of observing a value larger than the respective t values. This value is small enough for all predictor variables where it can be concluded that these variables are likely to be a meaningful addition to the model because changes in the predictor's value are related to changed in the response variable. Solid_Stripe and Light_Dark reach a 99%+ confidence level in this assumption, and Log_Days_Since_IPO reaches a 95% confidence level.
    
-  -Log_Days_Since_IPO coefficient of -0.06 shows the inverse relationship between price and the amount of days since the IPO of the sneaker. If the ratio of two values of this variable stays the same, the expected ratio of Sale Price stays the same. For example, for a 10% increase in SalePrice, the expected ratio of the Sale Price will be 1.10^(0.06099) which is 1.005830. In this case, we expect a 0.58% decrease in Sale Price when Days Since IPO increases by 10%. This value is more difficult to interpret when compared to a model where the log is taken off from Days Since IPO, but I believe the log is important here, since the relative importance of the days leans heavily toward those first days after a shoe releases. If a log were not included, the interpretation would simply be: For every one day increase in days since the IPO of the sneaker, Sale Price decreases by x. And in running a bivariate regression with just Sale Price and Days Since IPO, I got x = -$0.16
+  - Log_Days_Since_IPO coefficient of -0.06 shows the inverse relationship between price and the amount of days since the IPO of the sneaker. If the ratio of two values of this variable stays the same, the expected ratio of Sale Price stays the same. For example, for a 10% increase in SalePrice, the expected ratio of the Sale Price will be 1.10^(0.06099) which is 1.005830. In this case, we expect a 0.58% decrease in Sale Price when Days Since IPO increases by 10%. This value is more difficult to interpret when compared to a model where the log is taken off from Days Since IPO, but I believe the log is important here, since the relative importance of the days leans heavily toward those first days after a shoe releases. If a log were not included, the interpretation would simply be: For every one day increase in days since the IPO of the sneaker, Sale Price decreases by x. And in running a bivariate regression with just Sale Price and Days Since IPO, I got x = -$0.16
 
        
-  -Solid_Stripe coefficient of 0.24 is the ratio of the geometric mean for the solid group to the geometric mean for the stripe group. In this case, exponentiated coefficient is the ratio of the geometric mean for the solid group to the geometric mean for the stripe group. The expected percent increase in geometric mean from the solid group to stripe group is 27.13% holding other variables constant, since e^(0.24002) = 1.27127458.
+  - Solid_Stripe coefficient of 0.24 is the ratio of the geometric mean for the solid group to the geometric mean for the stripe group. In this case, exponentiated coefficient is the ratio of the geometric mean for the solid group to the geometric mean for the stripe group. The expected percent increase in geometric mean from the solid group to stripe group is 27.13% holding other variables constant, since e^(0.24002) = 1.27127458.
   
-  -Light_Dark coefficient of 0.31 is the ratio of the geometric mean for the light group to the geometric mean for the dark group. The exponentiated coefficient is also the ratio of the geometric means. The expected percent increase in geometric mean from the light group to dark group is 36.18% holding other variables constant, since e^(0.0.30882) = 1.36181722.
+  - Light_Dark coefficient of 0.31 is the ratio of the geometric mean for the light group to the geometric mean for the dark group. The exponentiated coefficient is also the ratio of the geometric means. The expected percent increase in geometric mean from the light group to dark group is 36.18% holding other variables constant, since e^(0.0.30882) = 1.36181722.
 
-  -Residual standard error of 0.21 is measuring the quality of the regression fit. It's the average amount that the price will deviate from regression line (536 df). Looking for smaller errors on average than the best model previously fitted. In my initial model with Shoe Size and no log transformations, the RSE was 81.67. The lower RSE in the final model, although log transformed, is a sign of good model fit and that the data points are more closely packed aroudn the fitted regression line.
+  - Residual standard error of 0.21 is measuring the quality of the regression fit. It's the average amount that the price will deviate from regression line (536 df). Looking for smaller errors on average than the best model previously fitted. In my initial model with Shoe Size and no log transformations, the RSE was 81.67. The lower RSE in the final model, although log transformed, is a sign of good model fit and that the data points are more closely packed aroudn the fitted regression line.
 
-  -R Squared of 0.3245 shows that our predictors variables are accounting 32.45% of the total variability in the Sale Price of a sneaker. This is quite low and means there are other factors that are not incorporated in the model. Potential predictor variables to be added in the future are detailed in the Future Analysis section.
+  - R Squared of 0.3245 shows that our predictors variables are accounting 32.45% of the total variability in the Sale Price of a sneaker. This is quite low and means there are other factors that are not incorporated in the model. Potential predictor variables to be added in the future are detailed in the Future Analysis section.
 
-  -F statistic of 85.82 is indicating whether there is a relationship between Sale Price and the selected predictor variables. F statistic is significantly larger than 1 so we can infer a relationship.
+  - F statistic of 85.82 is indicating whether there is a relationship between Sale Price and the selected predictor variables. F statistic is significantly larger than 1 so we can infer a relationship.
  
 # Summary
   The model used includes only statistically significant independent variables, with p-values for the binary regressors easily meeting a 99% confidence level, and Days Since IPO meeting a 95% confidence level. 
