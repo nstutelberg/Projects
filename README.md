@@ -196,11 +196,9 @@ My analysis only focuses on Yeezy 350 v2's so I can control for brand preference
     F-statistic: 655.5 on 8 and 531 DF,  p-value: < 2.2e-16
 
 Compare the above model to the final model above[(Link)](#Findings). The Rsquared of 0.90 is much higher than the Rsquared of 0.32 in the final model. However, there are too many variables to draw conclusive results from, and also the independent variables are only related to some select sneaker models, where I am trying find predictors that can be generalized to all pairs of Yeezy sneakers and to an extent, other brands of sneakers. 
-    
-    summary(lm(`Sale Price` ~ `Shoe Size` + `Days_Since_IPO` + `Solid_Stripe` + `Light_Dark`, data = shoestotal))
-  
+
      
-# Screenshots
+# Visualizations
 
     ButterPlot <- ggplot(Butter, aes(x = `Order Date`, y = `Sale Price`, color = `Shoe Size`)) +
         geom_point() + geom_smooth(method = "lm") +
