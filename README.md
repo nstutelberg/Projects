@@ -181,59 +181,9 @@ My analysis only focuses on Yeezy 350 v2's so I can control for brand preference
   
    There is a negative relationship between Days Since IPO and Sale Price, meaning over time, as the shoe moves away from it's IPO date, the resell price of the sneaker in the after-market decreases. Fail to reject Null.
   
-  
+ 
 
-
-
-# Future Analysis
-   Due to the model Rsquared being 0.32, there is still a significant amount of variation in the dependent variable that is not accounted for. 
-   
-   In future research, these are a few ideas I would pursue:
-   
-   -Through my experience in the market, I would argue that the number of similar Yeezys compared to the initial model would have an inverse relationship with price. The more similar colorways are released, the less demand there is for the original since some customers see the new model as being comparable to the original and buy the new model instead. This would act as an increase in supply, lowering the price of the original. I w
-          -To get this data, I would take a few Yeezy models and create a dummy variable for either 'Similar' or 'Dissimilar'. There would be some subjective calls on whether a new model is similar to the orginal, but I would mostly use characteristics such as color and pattern as I did in my first analysis.
-          
-   -I would also try to quantify the "hype" around the brand, since the sneaker reselling community often takes heightened interest in certain models for a time, and moves on when the model is either overdone or a new model comes in that attracts the attention of the community. I could use Google Trends as a proxy for interest in the brand, and I would search for the terms "Yeezy" and "Adidas" to see if there is an upward or downward trend in the number of searches related to these keywords. I could use the Google Trends data and tie it in with the shoe price to see if the more these words are searched, the more the sale price on a after-market site increases. 
-          -I could also look at the r/Sneakers subreddit where there are 3.1M followers, and record the amount of posts related to Yeezys show up in the feed and the number of upvotes for each post. The subreddit is a place for enthusiasts to show off their sneakers, and sneakers with the most "hype" and excitement around them garner more upvotes. Granted this is a subset of the sneaker community where the opinions may not represent the entire community, so the results would have to be taken with a grain of salt. 
-   
-   **Proposed Future Model**
-   
-      summary(lm(`Log_Sale_Price` ~ `Log_Days_Since_IPO` + `Solid_Stripe` + `Light_Dark` + `Hype_Level` + `Post_Engagement`, data = shoestotal))
-
-
-
-# Dummy Variable Notes  
-   In the R code, I ran a few analyses using dummy variables in order to see which models appreciated faster than others. These analyses are not tied to the final product, but the method is there if I wanted to compare sneaker models. To set up the dummy variables, I made a column for each sneaker model, and filled the columns with alternating 1s and 0s so I can toggle on and off certain models for a regression analysis. 
-   
-   For this method, I treated the Beluga-2pt0 as the base case model, and compared all other sneaker models to the Beluga. This analysis was mostly exploratory, but I found that the only sneaker that had a positive coefficient was the Yeezy 350 v2 Static Reflective. It is the only sneaker to appreciate in value over time, and this is further shown through a bivariate regression with sale price. Results shown below
-   
-    summary(lm(`Sale Price` ~ Blue_Tint + Butter + Cream_White + Frozen_Yellow + Sesame + Static + Static_Reflective+ Zebra, data = shoestotal))
-    
-    Residuals:
-         Min       1Q   Median       3Q      Max 
-    -102.315  -13.486   -2.482   13.518  132.000 
-
-    Coefficients:
-                      Estimate Std. Error t value Pr(>|t|)    
-    (Intercept)        429.250      8.526  50.345  < 2e-16 ***
-    Blue_Tint          -73.500     11.279  -6.516 1.67e-10 ***
-    Butter            -193.250     11.439 -16.894  < 2e-16 ***
-    Cream_White       -171.038      9.957 -17.179  < 2e-16 ***
-    Frozen_Yellow     -162.750      9.998 -16.278  < 2e-16 ***
-    Sesame            -160.250     10.785 -14.859  < 2e-16 ***
-    Static            -121.768      8.892 -13.694  < 2e-16 ***
-    Static_Reflective   53.065      8.760   6.058 2.62e-09 ***
-    Zebra              -91.250      9.353  -9.756  < 2e-16 ***
-    ---
-    Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-
-    Residual standard error: 29.54 on 531 degrees of freedom
-    Multiple R-squared:  0.9081,	Adjusted R-squared:  0.9067 
-    F-statistic: 655.5 on 8 and 531 DF,  p-value: < 2.2e-16
-
-Compare the above model to the final model above[(Link)](#Findings). The Rsquared of 0.90 is much higher than the Rsquared of 0.32 in the final model. However, there are too many variables to draw conclusive results from, and also the independent variables are only related to some select sneaker models, where I am trying find predictors that can be generalized to all pairs of Yeezy sneakers and to an extent, other brands of sneakers. 
-
-     
+      
 # Visualizations
 
 First set of visualizations show the general trends of two different models of sneakers. These two example graphs provide some context around the trending prices of these sneakers over time.
@@ -288,7 +238,57 @@ First set of visualizations show the general trends of two different models of s
          theme_economist_white()
 
     ggarrange(FinalPlot1, FinalPlot2, FinalPlot3, FinalPlot4)
-        
+         
+
+
+# Dummy Variable Notes  
+   In the R code, I ran a few analyses using dummy variables in order to see which models appreciated faster than others. These analyses are not tied to the final product, but the method is there if I wanted to compare sneaker models. To set up the dummy variables, I made a column for each sneaker model, and filled the columns with alternating 1s and 0s so I can toggle on and off certain models for a regression analysis. 
+   
+   For this method, I treated the Beluga-2pt0 as the base case model, and compared all other sneaker models to the Beluga. This analysis was mostly exploratory, but I found that the only sneaker that had a positive coefficient was the Yeezy 350 v2 Static Reflective. It is the only sneaker to appreciate in value over time, and this is further shown through a bivariate regression with sale price. Results shown below
+   
+    summary(lm(`Sale Price` ~ Blue_Tint + Butter + Cream_White + Frozen_Yellow + Sesame + Static + Static_Reflective+ Zebra, data = shoestotal))
+    
+    Residuals:
+         Min       1Q   Median       3Q      Max 
+    -102.315  -13.486   -2.482   13.518  132.000 
+
+    Coefficients:
+                      Estimate Std. Error t value Pr(>|t|)    
+    (Intercept)        429.250      8.526  50.345  < 2e-16 ***
+    Blue_Tint          -73.500     11.279  -6.516 1.67e-10 ***
+    Butter            -193.250     11.439 -16.894  < 2e-16 ***
+    Cream_White       -171.038      9.957 -17.179  < 2e-16 ***
+    Frozen_Yellow     -162.750      9.998 -16.278  < 2e-16 ***
+    Sesame            -160.250     10.785 -14.859  < 2e-16 ***
+    Static            -121.768      8.892 -13.694  < 2e-16 ***
+    Static_Reflective   53.065      8.760   6.058 2.62e-09 ***
+    Zebra              -91.250      9.353  -9.756  < 2e-16 ***
+    ---
+    Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+    Residual standard error: 29.54 on 531 degrees of freedom
+    Multiple R-squared:  0.9081,	Adjusted R-squared:  0.9067 
+    F-statistic: 655.5 on 8 and 531 DF,  p-value: < 2.2e-16
+
+Compare the above model to the final model above[(Link)](#Findings). The Rsquared of 0.90 is much higher than the Rsquared of 0.32 in the final model. However, there are too many variables to draw conclusive results from, and also the independent variables are only related to some select sneaker models, where I am trying find predictors that can be generalized to all pairs of Yeezy sneakers and to an extent, other brands of sneakers. 
+
+
+
+# Future Analysis
+   Due to the model Rsquared being 0.32, there is still a significant amount of variation in the dependent variable that is not accounted for. 
+   
+   In future research, these are a few ideas I would pursue:
+   
+   -Through my experience in the market, I would argue that the number of similar Yeezys compared to the initial model would have an inverse relationship with price. The more similar colorways are released, the less demand there is for the original since some customers see the new model as being comparable to the original and buy the new model instead. This would act as an increase in supply, lowering the price of the original. I w
+          -To get this data, I would take a few Yeezy models and create a dummy variable for either 'Similar' or 'Dissimilar'. There would be some subjective calls on whether a new model is similar to the orginal, but I would mostly use characteristics such as color and pattern as I did in my first analysis.
+          
+   -I would also try to quantify the "hype" around the brand, since the sneaker reselling community often takes heightened interest in certain models for a time, and moves on when the model is either overdone or a new model comes in that attracts the attention of the community. I could use Google Trends as a proxy for interest in the brand, and I would search for the terms "Yeezy" and "Adidas" to see if there is an upward or downward trend in the number of searches related to these keywords. I could use the Google Trends data and tie it in with the shoe price to see if the more these words are searched, the more the sale price on a after-market site increases. 
+          -I could also look at the r/Sneakers subreddit where there are 3.1M followers, and record the amount of posts related to Yeezys show up in the feed and the number of upvotes for each post. The subreddit is a place for enthusiasts to show off their sneakers, and sneakers with the most "hype" and excitement around them garner more upvotes. Granted this is a subset of the sneaker community where the opinions may not represent the entire community, so the results would have to be taken with a grain of salt. 
+   
+   **Proposed Future Model**
+   
+      summary(lm(`Log_Sale_Price` ~ `Log_Days_Since_IPO` + `Solid_Stripe` + `Light_Dark` + `Hype_Level` + `Post_Engagement`, data = shoestotal))
+
 
 ## Installation
    To run code, an updated version of R and RStudio is needed. Link is here: https://cran.r-project.org/
