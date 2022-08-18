@@ -60,15 +60,17 @@ My analysis only focuses on Yeezy 350 v2's so I can control for brand preference
 # Findings
    Analysis resulted in the linear regression model found below. I limited the independent variables used in the final model to 3. With more variables, the less impact each independent variable has, and the more likely it is that I would run into a multicollinearity problem. 
   
-  **Variable definitions:**
+**Variable definitions:**
   
-  Sale Price - Price that a sneaker sold for on StockX (after-market resell website).
   
-  Days Since IPO - Amount of days that have passed since the initial release of the sneaker.
   
-  Solid Stripe - Binary regressor with 0 being a solid colored Yeezy (no stripes / one solid color) and 1 being a striped Yeezy (stripes wrapping around entire sneaker).
+   Sale Price - Price that a sneaker sold for on StockX (after-market resell website).
   
-  Light Dark - Binary regressor with 0 being a light colored Yeezy (white, yellow, light blue) and 1 being a dark colored yeezy (gray, black, dark brown).
+   Days Since IPO - Amount of days that have passed since the initial release of the sneaker.
+  
+   Solid Stripe - Binary regressor with 0 being a solid colored Yeezy (no stripes / one solid color) and 1 being a striped Yeezy (stripes wrapping around entire sneaker).
+  
+   Light Dark - Binary regressor with 0 being a light colored Yeezy (white, yellow, light blue) and 1 being a dark colored yeezy (gray, black, dark brown).
   
    
      summary(lm(`Log_Sale_Price` ~ `Log_Days_Since_IPO` + `Solid_Stripe` + `Light_Dark`, data = shoestotal))
