@@ -53,8 +53,8 @@ My analysis only focuses on Yeezy 350 v2's so I can control for brand preference
         H₁: There is a positive relationship between the order date of a Yeezy and its sale price
         
 
-# Proposed Plan
-   To prepare the data, fix the day and get the day that has the greatest variation in the cross section. This would be a day where there is the most models being sold. Add a column for each sneaker to act as a dummy variable. Run both bivariate and multivariate regressions and perform tests on the model fit. Plot results to vizualise the regression line and look for heteroscedasticity and the amount of variance in the prices over time. This influences whether log transformations are needed to normalize the data. 
+# Initial Plan
+   To prepare the data, I fixed the day and found the day that had the greatest variation in the cross section. This would be a day where there are the most models being sold. I added a column for each sneaker to act as a dummy variable. Then, I ran both bivariate and multivariate regressions and performed tests on the model fit. I plotted results to visualize the regression line and looked for heteroscedasticity and the amount of variance in the prices over time. This influences whether log transformations were needed to normalize the data. 
    
    
 # Findings
