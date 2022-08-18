@@ -225,7 +225,7 @@ First set of visualizations show the general trends of two different models of s
     Multiple R-squared:  0.9081,	Adjusted R-squared:  0.9067 
     F-statistic: 655.5 on 8 and 531 DF,  p-value: < 2.2e-16
 
-Compare the above model to the final model above[(Link)](#Findings). The Rsquared of 0.90 is much higher than the Rsquared of 0.32 in the final model. However, there are too many variables to draw conclusive results from, and also the independent variables are only related to some select sneaker models, where I am trying find predictors that can be generalized to all pairs of Yeezy sneakers and to an extent, other brands of sneakers. 
+Compare the above model to the final model here: [(Link)](#Findings). The Rsquared of 0.90 is much higher than the Rsquared of 0.32 in the final model. However, there are too many variables to draw conclusive results from, and also the independent variables are only related to some select sneaker models, where I am trying find predictors that can be generalized to all pairs of Yeezy sneakers and to an extent, other brands of sneakers. 
 
 
 
