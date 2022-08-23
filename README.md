@@ -195,7 +195,7 @@ First set of visualizations show the general trends of two different models of s
 # Dummy Variable Notes  
    In the R code, I ran a few analyses using dummy variables to see which sneaker models appreciated faster than others. These analyses are not tied to the final product, but the method is there if I wanted to compare sneaker models. To set up the dummy variables, I made a column for each sneaker model, and filled the columns with alternating 1s and 0s so I could toggle on and off certain models for a regression analysis. 
    
-   For this method, I treated the Beluga-2pt0 as the base case model and compared all other sneaker models to the Beluga. This analysis was mostly exploratory, but I found that the only sneaker that had a positive coefficient was the Yeezy 350 v2 Static Reflective. It is the only sneaker to appreciate over time, and this is further shown through a bivariate regression with sale price. Results shown below
+   For this method, I treated the Beluga-2pt0 as the base case model and compared all other sneaker models to the Beluga. This analysis was mostly exploratory, but I found that the only sneaker that had a positive coefficient was the Yeezy 350 v2 Static Reflective. It is the only sneaker to beat out the base case and display higher sale prices, and this is further shown through a bivariate regression with sale price. Results shown below
    
     summary(lm(`Sale Price` ~ Blue_Tint + Butter + Cream_White + Frozen_Yellow + Sesame + Static + Static_Reflective+ Zebra, data = shoestotal))
     
