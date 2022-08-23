@@ -24,17 +24,17 @@ My analysis only focuses on Yeezy 350 v2's so I can control for brand preference
 # Hypotheses
    1) Solid color Yeezys appreciate faster than striped Yeezys
    
-         H₀: A solid colored Yeezy will not have a higher sale price over time in relation to a patterned Yeezy
+         H₀: A solid colored Yeezy will not have a higher sale price in relation to a patterned Yeezy
       
-         H₁: A solid colored Yeezy will have a higher sale price over time in relation to a patterned Yeezy
+         H₁: A solid colored Yeezy will have a higher sale price in relation to a patterned Yeezy
          
          
     
    2) Dark color Yeezys appreciate faster than light color Yeezys
    
-         H₀: A dark colored Yeezy will not have a higher sale price over time in relation to a light colored Yeezy
+         H₀: A dark colored Yeezy will not have a higher sale price in relation to a light colored Yeezy
       
-        H₁: A dark colored Yeezy will have a higher sale price over time in relation to a light colored Yeezy
+        H₁: A dark colored Yeezy will have a higher sale price in relation to a light colored Yeezy
         
         
       
