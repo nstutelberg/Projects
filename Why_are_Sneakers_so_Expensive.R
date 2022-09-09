@@ -10,6 +10,7 @@ library(scales)
 library(readr)
 library(ggthemes)
 library(ggplot2)
+library(ggpubr)
 
 #hypotheses
     #1) average disposable income per capita is positively related to the average selling price of yeezys.
@@ -369,14 +370,14 @@ FinalPlot2 <- ggplot(shoestotal, aes(x = `Days_Since_IPO`, y = `Sale Price`)) +
   theme_economist_white()
 
 
-FinalPlot3 <- ggplot(shoestotal, aes(x = `Light_Dark`, y = `Sale Price`)) +
-  geom_point() + geom_smooth(method = lm) +
-  ggtitle("Prices of Light vs Dark Colored Yeezys") +
-  labs(subtitle = "Left = Light  |  Right = Dark") +
+FinalPlot3 <- ggplot(shoestotal, aes(x = `Sale Price`, y = `Light_Dark`)) +
+  geom_point(alpha=.5) + stat_smooth(method=glm, se=FALSE, method.args = list(family=binomial)) +
+  ggtitle("Prices of Solid vs Stripe Patterned Yeezys") +
+  labs(subtitle = "Left = Solid  |  Right = Stripe") +
   theme_economist_white()
 
-FinalPlot4 <- ggplot(shoestotal, aes(x = `Solid_Stripe`, y = `Sale Price`)) +
-  geom_point() + geom_smooth(method = lm) +
+FinalPlot4 <- ggplot(shoestotal, aes(x = `Sale Price`, y = `Solid_Stripe`)) +
+  geom_point(alpha=.5) + stat_smooth(method=glm, se=FALSE, method.args = list(family=binomial)) +
   ggtitle("Prices of Solid vs Stripe Patterned Yeezys") +
   labs(subtitle = "Left = Solid  |  Right = Stripe") +
   theme_economist_white()
