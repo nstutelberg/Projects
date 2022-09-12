@@ -186,7 +186,7 @@ First set of visualizations show the general trends of two different models of s
 
 ![6340E6BC-6E52-48E8-B705-7A5416C5C256](https://user-images.githubusercontent.com/66582795/185454469-69dea65e-87d6-44c5-8dd0-8fdb24253b26.jpeg)
 
-   For the bottom two plots with the binary regressors, the regression line will not be meaningful because these variables contain discrete values rather than continuous. However, the graphs are still beneficial in order to see the difference in the mean price of the two cases (1vs0).
+   For the bottom two plots with the binary regressors, the regression line will not be as meaningful because these variables contain discrete values rather than continuous. However, the graphs are still beneficial in order to see the difference in the mean price of the two cases (1vs0).
    
 ![Rplot](https://user-images.githubusercontent.com/66582795/189401014-7b346ead-6cbe-4189-9971-1612af10761c.jpeg)
          
